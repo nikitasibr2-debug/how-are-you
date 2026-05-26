@@ -5,11 +5,13 @@
 
 import { Brand } from '../types';
 
+// Реальные логотипы брендов через Clearbit Logo API (https://clearbit.com/logo).
+// Сервис возвращает прозрачный PNG официального логотипа по корпоративному домену.
 export const brands: Brand[] = [
   {
     id: 'mindray',
     name: 'Mindray',
-    logo: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=120&h=60&q=80', // placeholder or clean text UI
+    logo: 'https://logo.clearbit.com/mindray.com',
     country: 'Китай',
     description: 'Один из лидирующих мировых производителей медицинского оборудования. Известен высококлассными УЗИ-аппаратами, мониторами пациента и наркозно-дыхательными установками с лучшим соотношением цены и качества.',
     categoryIds: ['uzi', 'reanimation', 'gynecology']
@@ -17,7 +19,7 @@ export const brands: Brand[] = [
   {
     id: 'ge_healthcare',
     name: 'GE Healthcare',
-    logo: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=120&h=60&q=80',
+    logo: 'https://logo.clearbit.com/gehealthcare.com',
     country: 'США',
     description: 'Признанный мировой лидер в области высокотехнологичного лучевого диагностического оборудования (МРТ, КТ, Маммографы) и премиальных УЗИ премиум-класса серии Voluson и Logiq.',
     categoryIds: ['uzi', 'rad_diag', 'gynecology']
@@ -25,7 +27,7 @@ export const brands: Brand[] = [
   {
     id: 'philips',
     name: 'Philips Healthcare',
-    logo: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=120&h=60&q=80',
+    logo: 'https://logo.clearbit.com/philips.com',
     country: 'Нидерланды',
     description: 'Инновационные решения для кардиологии, ультразвуковой диагностики премиум-класса (серии Affinity и Epiq) и систем мониторинга важных показателей жизнедеятельности.',
     categoryIds: ['uzi', 'reanimation', 'funct_diag']
@@ -33,7 +35,7 @@ export const brands: Brand[] = [
   {
     id: 'olympus',
     name: 'Olympus',
-    logo: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=120&h=60&q=80',
+    logo: 'https://logo.clearbit.com/olympus-global.com',
     country: 'Япония',
     description: 'Признанный золотой стандарт в сфере гибкой эндоскопии. Эндоскопы серий EVIS EXERA III и EVIS EXERA II используются в лучших диагностических центрах для ФГДС, колоноскопии и бронхоскопии.',
     categoryIds: ['flex_endoscopy', 'surgery']
@@ -41,7 +43,7 @@ export const brands: Brand[] = [
   {
     id: 'pentax',
     name: 'Pentax Medical',
-    logo: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=120&h=60&q=80',
+    logo: 'https://logo.clearbit.com/pentaxmedical.com',
     country: 'Япония',
     description: 'Крупный японский производитель эндоскопического оборудования высокого разрешения, предлагающий надежную оптику, превосходные механические свойства и эргономичные рукоятки.',
     categoryIds: ['flex_endoscopy']
@@ -49,7 +51,7 @@ export const brands: Brand[] = [
   {
     id: 'karl_storz',
     name: 'Karl Storz',
-    logo: 'https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=120&h=60&q=80',
+    logo: 'https://logo.clearbit.com/karlstorz.com',
     country: 'Германия',
     description: 'Мировой флагман в сфере жесткой эндоскопии, лапароскопии и инструментария для малоинвазивной хирургии, урологии и гинекологии.',
     categoryIds: ['rigid_endoscopy', 'surgery', 'urology']
@@ -57,7 +59,7 @@ export const brands: Brand[] = [
   {
     id: 'samsung_medison',
     name: 'Samsung Medison',
-    logo: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=120&h=60&q=80',
+    logo: 'https://logo.clearbit.com/samsunghealthcare.com',
     country: 'Южная Корея',
     description: 'Премиальные ультразвуковые сканеры экспертного уровня, особенно востребованные в акушерстве, гинекологии за счет передовых 3D/4D технологий визуализации плода (серия WS80, H60).',
     categoryIds: ['uzi', 'gynecology']
@@ -65,7 +67,7 @@ export const brands: Brand[] = [
   {
     id: 'chison',
     name: 'CHISON',
-    logo: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=120&h=60&q=80',
+    logo: 'https://logo.clearbit.com/chison.com',
     country: 'Китай',
     description: 'Высокоэффективные портативные УЗИ-аппараты и доступные стационарные системы для универсальных исследований.',
     categoryIds: ['uzi']

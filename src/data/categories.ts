@@ -11,7 +11,8 @@ export const categories: Category[] = [
     name: 'Ультразвуковая диагностика',
     tagline: 'Экспертные и портативные УЗИ-аппараты ведущих мировых производителей',
     icon: 'Activity',
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=400&h=250&q=80',
+    // УЗИ-исследование, врач у экрана сканера
+    image: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 42,
     popularityOrder: 1,
     subcategories: [
@@ -25,7 +26,8 @@ export const categories: Category[] = [
     name: 'Гибкая эндоскопия',
     tagline: 'Видеогастроскопы, видеоколоноскопы и эндоскопические видеосистемы HD уровня',
     icon: 'Eye',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&h=250&q=80',
+    // Эндоскопическая стойка / видеосистема в операционной
+    image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 28,
     popularityOrder: 2,
     subcategories: [
@@ -39,7 +41,8 @@ export const categories: Category[] = [
     name: 'Лучевая диагностика',
     tagline: 'МРТ, КТ сканеры, цифровые рентген-аппараты и компьютерные томографы',
     icon: 'Radio',
-    image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=400&h=250&q=80',
+    // МРТ-томограф крупным планом
+    image: 'https://images.unsplash.com/photo-1516069677018-378515003435?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 15,
     popularityOrder: 3,
     subcategories: [
@@ -53,7 +56,8 @@ export const categories: Category[] = [
     name: 'Анестезиология и реанимация',
     tagline: 'Аппараты ИВЛ, наркозно-дыхательные аппараты, мониторы пациента и дефибрилляторы',
     icon: 'HeartPulse',
-    image: 'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=400&h=250&q=80',
+    // Палата интенсивной терапии с аппаратурой
+    image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 35,
     popularityOrder: 4,
     subcategories: [
@@ -67,7 +71,8 @@ export const categories: Category[] = [
     name: 'Акушерство и гинекология',
     tagline: 'Гинекологические кресла, фетальные мониторы, кольпоскопы',
     icon: 'Layers',
-    image: 'https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=400&h=250&q=80',
+    // Беременная пациентка на УЗИ
+    image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 19,
     popularityOrder: 5,
     subcategories: [
@@ -80,7 +85,8 @@ export const categories: Category[] = [
     name: 'Жесткая эндоскопия',
     tagline: 'Лапароскопы, артроскопы, гистероскопы и стойки в сборе',
     icon: 'Component',
-    image: 'https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=400&h=250&q=80',
+    // Малоинвазивная хирургия / лапароскопия в операционной
+    image: 'https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 22,
     popularityOrder: 6,
     subcategories: [
@@ -106,7 +112,8 @@ export const categories: Category[] = [
     name: 'Стерилизация и дезинфекция',
     tagline: 'Медицинские автоклавы, плазменные стерилизаторы и моечно-дезинфицирующие машины',
     icon: 'Shield',
-    image: 'https://images.unsplash.com/photo-1581594541451-330a9f139366?auto=format&fit=crop&w=400&h=250&q=80',
+    // Автоклав / лабораторное стерильное оборудование
+    image: 'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 18,
     popularityOrder: 8,
     subcategories: [
@@ -119,7 +126,8 @@ export const categories: Category[] = [
     name: 'Офтальмология',
     tagline: 'Авторефрактометры, щелевые лампы, оптические когерентные томографы',
     icon: 'EyeOff',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=400&h=250&q=80',
+    // Осмотр глаза за щелевой лампой
+    image: 'https://images.unsplash.com/photo-1582560475093-ba66accbc424?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 16,
     popularityOrder: 9,
     subcategories: [
@@ -132,7 +140,8 @@ export const categories: Category[] = [
     name: 'Лаборатория',
     tagline: 'Гематологические и биохимические анализаторы, медицинские центрифуги',
     icon: 'FlaskConical',
-    image: 'https://images.unsplash.com/photo-1532187863486-abf9d39d66e8?auto=format&fit=crop&w=400&h=250&q=80',
+    // Микроскоп, лаборант за работой
+    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 25,
     popularityOrder: 10,
     subcategories: [
@@ -145,7 +154,8 @@ export const categories: Category[] = [
     name: 'Урология',
     tagline: 'Урологические комплексы, литотрипторы, уродинамические системы',
     icon: 'Briefcase',
-    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=400&h=250&q=80',
+    // Современный медицинский кабинет
+    image: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 11,
     popularityOrder: 11,
     subcategories: [
@@ -158,7 +168,8 @@ export const categories: Category[] = [
     name: 'Хирургия',
     tagline: 'Операционные столы, хирургические светильники, коагуляторы',
     icon: 'Bed',
-    image: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=400&h=250&q=80',
+    // Операционная: стол и светильник
+    image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=400&h=250&q=80',
     productCount: 29,
     popularityOrder: 12,
     subcategories: [
