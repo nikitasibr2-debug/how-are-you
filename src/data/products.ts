@@ -36,9 +36,11 @@ export const products: Product[] = [
       'Флакон геля 250 мл и держатели датчиков'
     ],
     applications: ['Акушерство', 'Гинекология', 'Кардиология', 'Ангиология', 'Абдоминальные исследования'],
+    // Mindray Resona I9 — стационарный экспертный УЗИ-сканер с большой консолью
     images: [
-      'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&h=400&q=80',
-      'https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
@@ -80,9 +82,11 @@ export const products: Product[] = [
       'Внутриполостной датчик RIC6-12-D'
     ],
     applications: ['Акушерство', 'Гинекология', 'Педиатрия', 'Кардио-исследования плода'],
+    // GE Voluson E10 — премиальная акушерская/гинекологическая УЗИ-станция, 4D
     images: [
-      'https://images.unsplash.com/photo-1579684389782-64d84b5e901a?auto=format&fit=crop&w=600&h=400&q=80',
-      'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 12,
     hasRegistrationCertificate: true,
@@ -124,8 +128,10 @@ export const products: Product[] = [
       'Адаптер питания и дополнительная АКБ'
     ],
     applications: ['Травматология', 'Реанимация', 'Анестезиология', 'Кардиология', 'Скорая помощь'],
+    // Mindray M9 — портативный УЗИ-сканер ноутбучного типа для скорой/реанимации
     images: [
-      'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 18,
     hasRegistrationCertificate: true,
@@ -167,9 +173,10 @@ export const products: Product[] = [
       'Инструментарий для тестов герметичности'
     ],
     applications: ['Гастроэнтерология', 'Колопроктология', 'Пульмонология', 'Хирургия'],
+    // Olympus EVIS EXERA III — эндоскопическая видеосистема, стойка в кабинете ФГДС
     images: [
-      'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&h=400&q=80',
-      'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
@@ -210,8 +217,10 @@ export const products: Product[] = [
       'Фирменный кейс для переноски и хранения и масло для клапанов'
     ],
     applications: ['Гастроскопия (ФГДС)', 'Интервенционная хирургия ЖКТ', 'Биопсия слизистой'],
+    // Olympus GIF-HQ190 — видеогастроскоп, гибкий эндоскоп в руках врача
     images: [
-      'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 12,
     hasRegistrationCertificate: true,
@@ -252,8 +261,10 @@ export const products: Product[] = [
       'Акустические и визуальные тревожные индикаторы встроенные'
     ],
     applications: ['Реанимация', 'Палаты интенсивной терапии (ПИТ)', 'Транспортировка пациентов внутри клиники'],
+    // Mindray SV300 — аппарат ИВЛ в палате интенсивной терапии
     images: [
-      'https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 18,
     hasRegistrationCertificate: true,
@@ -294,8 +305,10 @@ export const products: Product[] = [
       'Клавиатура медицинская влагозащищенная USB'
     ],
     applications: ['Лапароскопия', 'Оториноларингология (ЛОР)', 'Гистероскопия', 'Урология'],
+    // Karl Storz TELE PACK — мобильная хирургическая видеосистема, операционная
     images: [
-      'https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
@@ -336,8 +349,10 @@ export const products: Product[] = [
       'Компрессор медицинского воздуха (опция)'
     ],
     applications: ['Анестезиология', 'Общая хирургия', 'Операционные блоки всех типов'],
+    // Mindray WATO EX-35 Pro — наркозно-дыхательная станция в операционной
     images: [
-      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1583912267550-d6c2ac3196c0?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
@@ -378,8 +393,10 @@ export const products: Product[] = [
       'Рулон ЭКГ-бумаги высокого качества'
     ],
     applications: ['Функциональная диагностика', 'Терапия', 'Кардиологические бригады скорой помощи'],
+    // Philips PageWriter TC20 — 12-канальный кардиограф, кардио-кабинет
     images: [
-      'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 12,
     hasRegistrationCertificate: true,
@@ -419,8 +436,10 @@ export const products: Product[] = [
       'Полостной датчик 3D/4D (по запросу)'
     ],
     applications: ['Скрининги в ЖК', 'Многопрофильные клиники', 'Общая абдоминальная терапия', 'Сосуды'],
+    // Samsung HS40 Expert — стационарный УЗИ-сканер, скрининг в ЖК
     images: [
-      'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&h=400&q=80'
+      'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 12,
     hasRegistrationCertificate: true,
