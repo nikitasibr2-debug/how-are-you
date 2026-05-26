@@ -10,8 +10,9 @@ export interface TelegramSettings {
  * LocalStorage takes precedence for easy runtime configuration in preview/app modes.
  */
 export function getTelegramSettings(): TelegramSettings {
-  const localToken = localStorage.getItem('astmed_tg_bot_token') || '';
-  const localChatId = localStorage.getItem('astmed_tg_chat_id') || '';
+  const hasLS = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  const localToken = hasLS ? (localStorage.getItem('astmed_tg_bot_token') || '') : '';
+  const localChatId = hasLS ? (localStorage.getItem('astmed_tg_chat_id') || '') : '';
 
   const envToken = ((import.meta as any).env?.VITE_TELEGRAM_BOT_TOKEN as string) || '';
   const envChatId = ((import.meta as any).env?.VITE_TELEGRAM_CHAT_ID as string) || '';
