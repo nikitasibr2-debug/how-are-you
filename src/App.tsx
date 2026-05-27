@@ -837,9 +837,9 @@ export default function App() {
                     {heroConfigTab === 'surgery' && (
                       <div className="space-y-3 animate-fade-in">
                         <div className="h-32 bg-slate-900 border border-slate-850 rounded-xl flex flex-col justify-between items-center p-3 relative overflow-hidden">
-                          {/* Тематическое фото: операционная */}
-                          <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&q=70" alt="Операционный блок" className="absolute inset-0 w-full h-full object-cover opacity-40" loading="lazy" />
-                          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/50 to-emerald-900/70"></div>
+                          {/* Фото аппарата: Mindray WATO EX-65 Pro */}
+                          <img src={deviceAnesthesia} alt="Наркозно-дыхательный аппарат Mindray WATO EX-65" width={1024} height={1024} className="absolute right-2 top-1/2 -translate-y-1/2 h-[120%] w-auto object-contain drop-shadow-2xl pointer-events-none" loading="lazy" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/85 to-transparent"></div>
                           <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:12px_12px] opacity-10"></div>
                           
                           
