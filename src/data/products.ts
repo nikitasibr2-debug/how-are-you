@@ -597,8 +597,8 @@ export const products: Product[] = [
       'Аппаратная терапия синдрома сухого глаза (IPL Dry Eye) и блефаритов'
     ],
     images: [
-      'https://downloader.disk.yandex.ru/preview/e30cee0b70b2cb5a1930a3b93cc687185001882bca6458e9f90d82e4cbe481da/6a146ed2/xCzYxR9lGpJ-V72AJ3oAR7zCREA0TpiDRHEfHZEgFnSZX-w28TqCbd8eKDQ4UT5rEm3FLda9MEXf7TjtazOd1w%3D%3D?uid=0&filename=179A2226.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v3&is_direct_zip_experiment=1&size=XXXL&crop=0',
-      'https://downloader.disk.yandex.ru/preview/41b9a72ced8aa93d84a52dbd4b667749ae06e531d2fc2bc9eaabfccdc6882b1f/6a146ed2/CI6jYmucuK5Q0-0wrhAJhLIvsaIvZ3N8GRVTiyHMlPZJ81zb1KtlZ9FbqhoL-3Q7cZnefjlpX4LJDlOzOHxBnQ%3D%3D?uid=0&filename=179A2260.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=0&tknv=v3&is_direct_zip_experiment=1&size=XXXL&crop=0'
+      'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=400&q=80',
+      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
