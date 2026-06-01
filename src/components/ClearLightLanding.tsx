@@ -38,7 +38,8 @@ import {
   User
 } from 'lucide-react';
 import { Product, Article } from '../types';
-import albumImages from '../data/clearlight_album_images.json';
+import albumImagesRaw from '../data/clearlight_album_images.json';
+const albumImages = albumImagesRaw as Record<string, string>;
 import { logger } from '../lib/logger';
 
 interface ClearLightLandingProps {
