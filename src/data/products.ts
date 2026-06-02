@@ -597,7 +597,7 @@ export const products: Product[] = [
       'Аппаратная терапия синдрома сухого глаза (IPL Dry Eye) и блефаритов'
     ],
     images: [
-      'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&h=400&q=80',
+      '/clearlight/device-full.jpg',
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&h=400&q=80'
     ],
     warrantyMonths: 24,
