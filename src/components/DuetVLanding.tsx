@@ -28,8 +28,10 @@ import {
   ShieldAlert
 } from 'lucide-react';
 import { Product, Article } from '../types';
-import albumImages from '../data/duet_v_album_images.json';
+import albumImagesRaw from '../data/duet_v_album_images.json';
 import { logger } from '../lib/logger';
+
+const albumImages = albumImagesRaw as Record<string, string>;
 
 interface DuetVLandingProps {
   product: Product;
@@ -140,7 +142,7 @@ export const DuetVLanding: React.FC<DuetVLandingProps> = ({
       title: "Глубокое термо-ремоделирование и лифтинг овала лица",
       description: "Пациентка 46 лет. Проблема: гравитационный птоз, обвисание щечной зоны («брыли»), нечеткий контур нижней челюсти. Проведено 3 сеанса монополярного RF насадкой NTTS на аппарате Duet V.",
       stats: "Сокращение избытков кожи на 38%, подтяжка овала лица, восстановление угла молодости до 110 градусов без реабилитации.",
-      img: albumImages["01.jpg"] || "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&h=400&q=80",
+      img: "/clearlight/device-main.png",
       param: "Энергия: 65 Дж/см², Насадка NTTS-300, 420 импульсов на лицо и шею."
     },
     pimples: {
