@@ -191,8 +191,8 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
       problem: "Пациент 19 лет. Угревая сыпь, воспалительные папулы, застойные синюшные пятна постакне на щеках и подбородке. Кожа жирная, пористая.",
       solution: "Курс из 4 процедур на ClearLight с интервалом 14 дней. Использовали фильтр 430 нм для подавления бактерий, затем 585 нм для экспресс-рассасывания застойных пятен.",
       result: "Воспаления сокращены на 92%. Саловыделение снизилось на 40%, застойные пятна практически нивелированы. Без применения системных ретиноидов.",
-      photoBefore: "/clearlight/device-main.png",
-      photoAfter: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=600&h=400&q=80",
+      photoBefore: albumImages["main-product.jpg"] || "/clearlight/main-product.jpg",
+      photoAfter: "/clearlight/device-full.jpg",
       filterUsed: "430 нм & 585 нм"
     },
     pigment: {
@@ -429,7 +429,7 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
             <div className="relative bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-2xl max-w-md w-full">
               <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center">
                 <img 
-                  src={albumImages["179A2226.png"]} 
+                  src={albumImages["main-product.jpg"] || "/clearlight/main-product.jpg"} 
                   alt="ClearLight IPL Аппарат" 
                   className="object-contain max-h-full max-w-full p-4 hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
@@ -449,7 +449,7 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
               {/* Миниатюры других коммерческих ракурсов */}
               <div className="grid grid-cols-3 gap-2 mt-3">
                 <div className="aspect-square bg-slate-950 border border-slate-800 rounded-lg p-2 flex items-center justify-center cursor-pointer hover:border-sky-505 transition-colors">
-                  <img src={albumImages["179A2260.png"]} alt="Манипула" className="max-h-full object-contain" referrerPolicy="no-referrer" />
+                  <img src={albumImages["main-product.jpg"] || "/clearlight/main-product.jpg"} alt="Манипула" className="max-h-full object-contain" referrerPolicy="no-referrer" />
                 </div>
                 <div className="aspect-square bg-slate-950 border border-slate-800 rounded-lg p-2 flex items-center justify-center cursor-pointer hover:border-sky-505 transition-colors">
                   <img src={albumImages["5113.jpg"]} alt="Узел зажигания" className="max-h-full object-contain" referrerPolicy="no-referrer" />
