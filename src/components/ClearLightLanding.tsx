@@ -191,8 +191,8 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
       problem: "Пациент 19 лет. Угревая сыпь, воспалительные папулы, застойные синюшные пятна постакне на щеках и подбородке. Кожа жирная, пористая.",
       solution: "Курс из 4 процедур на ClearLight с интервалом 14 дней. Использовали фильтр 430 нм для подавления бактерий, затем 585 нм для экспресс-рассасывания застойных пятен.",
       result: "Воспаления сокращены на 92%. Саловыделение снизилось на 40%, застойные пятна практически нивелированы. Без применения системных ретиноидов.",
-      photoBefore: "/clearlight/device-main.png",
-      photoAfter: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=600&h=400&q=80",
+      photoBefore: albumImages["main-product.jpg"] || "/clearlight/main-product.jpg",
+      photoAfter: "/clearlight/device-full.jpg",
       filterUsed: "430 нм & 585 нм"
     },
     pigment: {
