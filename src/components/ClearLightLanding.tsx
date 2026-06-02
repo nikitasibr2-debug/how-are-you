@@ -429,7 +429,7 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
             <div className="relative bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-2xl max-w-md w-full">
               <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center">
                 <img 
-                  src={albumImages["179A2226.png"]} 
+                  src={albumImages["main-product.jpg"] || "/clearlight/main-product.jpg"} 
                   alt="ClearLight IPL Аппарат" 
                   className="object-contain max-h-full max-w-full p-4 hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
