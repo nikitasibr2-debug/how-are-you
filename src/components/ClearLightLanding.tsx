@@ -1127,6 +1127,8 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
                     onClick={() => triggerQuote(product, 'consultation')}
                     className="bg-slate-900 hover:bg-slate-950 text-white text-xs font-bold py-2.5 px-4.5 rounded-lg transition-colors"
                   >
+                    Заказать экспертный разбор
+                  </button>
                     Заказать звонок методиста
                   </button>
                 </div>
