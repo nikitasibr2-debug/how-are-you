@@ -449,7 +449,7 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
               {/* Миниатюры других коммерческих ракурсов */}
               <div className="grid grid-cols-3 gap-2 mt-3">
                 <div className="aspect-square bg-slate-950 border border-slate-800 rounded-lg p-2 flex items-center justify-center cursor-pointer hover:border-sky-505 transition-colors">
-                  <img src={albumImages["179A2260.png"]} alt="Манипула" className="max-h-full object-contain" referrerPolicy="no-referrer" />
+                  <img src={albumImages["main-product.jpg"] || "/clearlight/main-product.jpg"} alt="Манипула" className="max-h-full object-contain" referrerPolicy="no-referrer" />
                 </div>
                 <div className="aspect-square bg-slate-950 border border-slate-800 rounded-lg p-2 flex items-center justify-center cursor-pointer hover:border-sky-505 transition-colors">
                   <img src={albumImages["5113.jpg"]} alt="Узел зажигания" className="max-h-full object-contain" referrerPolicy="no-referrer" />
