@@ -28,8 +28,10 @@ import {
   ShieldAlert
 } from 'lucide-react';
 import { Product, Article } from '../types';
-import albumImages from '../data/duet_v_album_images.json';
+import albumImagesRaw from '../data/duet_v_album_images.json';
 import { logger } from '../lib/logger';
+
+const albumImages = albumImagesRaw as Record<string, string>;
 
 interface DuetVLandingProps {
   product: Product;
