@@ -3519,6 +3519,18 @@ export default function App() {
           </div>
         )}
 
+        {activeTab === 'versana-landing' && (
+          <div className="animate-fade-in" id="versana-landing-view">
+            <VersanaBalanceLanding
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
         {/* 9. ABOUT COMPANY */}
         {activeTab === 'about' && (
           <div className="space-y-8 animate-fade-in" id="about-view">
