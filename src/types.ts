@@ -90,4 +90,4 @@ export interface FilterState {
   specs: Record<string, string[]>; // Arbitrary dynamic filter keys
 }
 
-export type ViewTab = 'main' | 'catalog' | 'comparison' | 'favorites' | 'services' | 'faq' | 'brands' | 'blog' | 'about' | 'product-landing' | 'duet-v-landing' | 'clearlight-landing';
+export type ViewTab = 'main' | 'catalog' | 'comparison' | 'favorites' | 'services' | 'faq' | 'brands' | 'blog' | 'about' | 'product-landing' | 'duet-v-landing' | 'clearlight-landing' | 'versana-landing';

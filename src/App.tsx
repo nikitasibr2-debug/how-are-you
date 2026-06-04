@@ -55,6 +55,7 @@ import { faqs } from './data/faqs';
 import { articles } from './data/articles';
 import { DuetVLanding } from './components/DuetVLanding';
 import { ClearLightLanding } from './components/ClearLightLanding';
+import { VersanaBalanceLanding } from './components/VersanaBalanceLanding';
 import deviceUltrasound from './assets/device-ultrasound.jpg';
 import deviceAnesthesia from './assets/device-anesthesia.jpg';
 import deviceRfLifting from './assets/device-rf-lifting.jpg';
@@ -112,6 +113,10 @@ export default function App() {
       setActiveTab('clearlight-landing');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       logger.info(`Переход на специальную страницу-лендинг для косметологического аппарата: ${product.name}`);
+    } else if (product.id === 'versana-balance-r2') {
+      setActiveTab('versana-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на лендинг УЗИ-аппарата: ${product.name}`);
     } else {
       setSelectedProduct(product);
       logger.info(`Открыто модальное окно деталей товара: ${product.name}`);
@@ -3507,6 +3512,18 @@ export default function App() {
               triggerQuote={(prod, type) => triggerQuote(prod, type)}
               onBackToCatalog={() => {
                 setSelectedCategory('cosmetology');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {activeTab === 'versana-landing' && (
+          <div className="animate-fade-in" id="versana-landing-view">
+            <VersanaBalanceLanding
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
                 setActiveTab('catalog');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
