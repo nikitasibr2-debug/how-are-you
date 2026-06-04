@@ -55,6 +55,7 @@ import { faqs } from './data/faqs';
 import { articles } from './data/articles';
 import { DuetVLanding } from './components/DuetVLanding';
 import { ClearLightLanding } from './components/ClearLightLanding';
+import { VersanaBalanceLanding } from './components/VersanaBalanceLanding';
 import deviceUltrasound from './assets/device-ultrasound.jpg';
 import deviceAnesthesia from './assets/device-anesthesia.jpg';
 import deviceRfLifting from './assets/device-rf-lifting.jpg';
