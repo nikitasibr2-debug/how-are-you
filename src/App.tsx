@@ -113,6 +113,10 @@ export default function App() {
       setActiveTab('clearlight-landing');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       logger.info(`Переход на специальную страницу-лендинг для косметологического аппарата: ${product.name}`);
+    } else if (product.id === 'versana-balance-r2') {
+      setActiveTab('versana-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на лендинг УЗИ-аппарата: ${product.name}`);
     } else {
       setSelectedProduct(product);
       logger.info(`Открыто модальное окно деталей товара: ${product.name}`);
