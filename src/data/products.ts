@@ -614,5 +614,54 @@ export const products: Product[] = [
       'Параметры электропитания': 'AC 220-240В, 50/60 Гц, потребление до 1200 Вт',
       'Страна производства': 'Южная Корея (EunSung Global)'
     }
+  },
+  {
+    id: 'versana-balance-r2',
+    name: 'УЗИ-аппарат GE Healthcare Versana Balance R2',
+    brandId: 'ge_healthcare',
+    brandName: 'GE Healthcare',
+    categoryId: 'uzi',
+    subCategoryId: 'uzi_stationary',
+    article: 'AM-VBR2',
+    price: 0,
+    currency: 'RUB',
+    country: 'США',
+    availability: 'on_order',
+    badge: 'new',
+    description: 'Versana Balance R2 — умный многопрофильный УЗИ-аппарат GE HealthCare для частных клиник и поликлиник: GE-качество изображения, ИИ-автоматизация Whizz и простота работы с первого дня.',
+    features: [
+      '21.5" HD монитор и мультижестовая сенсорная панель',
+      '3 одновременно активных порта датчиков RS-Pin',
+      'Whizz Dynamic Image и Whizz Label — ИИ-автонастройка и разметка',
+      'B-Flow, CrossXBeam, SRI-HD, Needle Recognition',
+      'CE + FDA сертификация, InSite удалённая поддержка'
+    ],
+    packageIncludes: [
+      'Аппарат Versana Balance R2 с выбранными датчиками',
+      'Официальная гарантия GE HealthCare',
+      'InSite — удалённая диагностика и поддержка',
+      'Обучение My Trainer на экране аппарата',
+      'e-Delivery — программные обновления онлайн',
+      'Полный пакет документов на русском (РУ, паспорт, инструкции)'
+    ],
+    applications: ['Абдомен', 'Акушерство', 'Гинекология', 'МСК', 'Сосуды', 'Малые части', 'Педиатрия'],
+    images: [
+      'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&h=400&q=80'
+    ],
+    warrantyMonths: 24,
+    hasRegistrationCertificate: true,
+    fullSpecs: {
+      'Монитор': '21.5" HD LED, антибликовый, регулируемый',
+      'Touch-панель': 'Мультижестовая сенсорная панель',
+      'Активных портов датчиков': '3 одновременно',
+      'Совместимость датчиков': 'RS-Pin (вся линейка GE Versana)',
+      'Режимы': 'B, M, Color Flow, PDI, PW, CW (опция), B-Flow (опция), 3D/4D (опция)',
+      'ИИ-автоматизация': 'Whizz Dynamic Image, Whizz Label, Scan Assistant',
+      'Иглы': 'Needle Recognition (автовыделение)',
+      'Подключение': 'DICOM 3.0, USB, LAN, WiFi',
+      'Хранилище': 'SSD ~512 ГБ',
+      'Высота системы': '1340–1500 мм (регулируемая)',
+      'Сертификация': 'CE, FDA'
+    }
   }
 ];
