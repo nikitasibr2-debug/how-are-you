@@ -223,37 +223,40 @@ export const VolusonExpert22Landing: React.FC<VolusonExpert22LandingProps> = ({
   return (
     <div className="space-y-16 animate-fade-in text-slate-800 font-sans" id="voluson-expert-22-landing-root">
       
-      {/* HEADER CONTROLS */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-50 border border-slate-100 p-4 rounded-2xl">
-        <button 
-          onClick={onBackToCatalog}
-          className="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-slate-900 transition"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Вернуться в УЗИ каталог
-        </button>
-        <div className="flex gap-2">
-          <button 
-            onClick={() => toggleFavorite(product.id)}
-            className={`p-2.5 rounded-xl border transition flex items-center gap-2 text-xs font-bold ${
-              isFavorite 
-                ? 'bg-rose-50 border-rose-100 text-rose-600' 
-                : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
-            }`}
+      {/* breadcrumbs */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-100 pb-5">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full md:w-auto">
+          <button
+            onClick={onBackToCatalog}
+            className="flex items-center justify-center gap-2 text-slate-700 hover:text-slate-900 transition group cursor-pointer border border-slate-200 bg-white py-2 px-4 rounded-xl hover:bg-slate-50 text-xs font-bold shrink-0 w-full sm:w-auto"
           >
-            <Heart className={`w-4 h-4 ${isFavorite ? 'fill-rose-600 text-rose-600' : ''}`} />
-            {isFavorite ? 'В избранном' : 'В избранное'}
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            Вернуться в каталог
           </button>
-          <button 
+          <div className="text-xs text-slate-400 font-medium font-sans flex items-center gap-1.5 flex-wrap px-1">
+            <span onClick={onBackToCatalog} className="hover:text-slate-900 hover:underline transition cursor-pointer">Главная</span>
+            <span className="text-slate-300">/</span>
+            <span onClick={onBackToCatalog} className="hover:text-slate-900 hover:underline transition cursor-pointer">Каталог</span>
+            <span className="text-slate-300">/</span>
+            <span onClick={onBackToCatalog} className="hover:text-slate-900 hover:underline transition cursor-pointer">УЗИ GE</span>
+            <span className="text-slate-300">/</span>
+            <span className="font-bold text-slate-700 truncate max-w-[240px] sm:max-w-none">{product.name}</span>
+          </div>
+        </div>
+        <div className="flex gap-2.5 w-full md:w-auto justify-between sm:justify-start">
+          <button
+            onClick={() => toggleFavorite(product.id)}
+            className={`flex-1 sm:flex-none justify-center px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 ${isFavorite ? 'bg-rose-50 border-rose-100 text-rose-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+          >
+            <Heart className={`w-4 h-4 ${isFavorite ? 'fill-rose-500 text-rose-500' : ''}`} />
+            <span>{isFavorite ? 'В избранном' : 'В избранное'}</span>
+          </button>
+          <button
             onClick={() => toggleCompare(product.id)}
-            className={`p-2.5 rounded-xl border transition flex items-center gap-2 text-xs font-bold ${
-              isCompared 
-                ? 'bg-blue-50 border-blue-100 text-blue-700' 
-                : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
-            }`}
+            className={`flex-1 sm:flex-none justify-center px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 ${isCompared ? 'bg-cyan-50 border-cyan-100 text-cyan-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
           >
             <ArrowRightLeft className="w-4 h-4" />
-            {isCompared ? 'В сравнении' : 'Сравнить'}
+            <span>{isCompared ? 'В сравнении' : 'Добавить к сравнению'}</span>
           </button>
         </div>
       </div>
