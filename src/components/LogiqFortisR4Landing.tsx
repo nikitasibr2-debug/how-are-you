@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 import { Product, Article } from '../types';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface LogiqFortisR4LandingProps {
   product: Product;
@@ -962,6 +963,8 @@ export const LogiqFortisR4Landing: React.FC<LogiqFortisR4LandingProps> = ({
       </section>
 
       {/* 10. LEGAL DISCLAIMER */}
+      <AstmedTeamBlock />
+
       <footer className="pt-8 border-t border-slate-900 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-[10px] text-slate-600 space-y-2">
         <p>Имеются противопоказания. Требуется консультация специалиста. Оборудование зарегистрировано в установленном порядке Росздравнадзором Минздрава РФ.</p>
         <p>© 2026 AstMed. Все права защищены. GE Healthcare и LOGIQ являются зарегистрированными товарными знаками General Electric Company.</p>

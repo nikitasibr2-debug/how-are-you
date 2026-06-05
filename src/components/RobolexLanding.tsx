@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import { Product, Article } from '../types';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface RobolexLandingProps {
   product: Product;
@@ -1181,6 +1182,9 @@ export const RobolexLanding: React.FC<RobolexLandingProps> = ({
           </div>
         </div>
       </section>
+
+      <AstmedTeamBlock />
+
 
       {/* 🚀 FLOAT NAV WIDGET FOR QUICK RETURN */}
       {showScrollTop && (

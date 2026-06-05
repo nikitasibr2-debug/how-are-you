@@ -30,6 +30,7 @@ import {
 } from 'lucide-react';
 import { Product, Article } from '../types';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface MindrayConsonaN8LandingProps {
   product: Product;
@@ -1024,6 +1025,8 @@ export const MindrayConsonaN8Landing: React.FC<MindrayConsonaN8LandingProps> = (
       </section>
 
       {/* 🧾 11. LEGAL STATE MEDICAL DISCLAIMER */}
+      <AstmedTeamBlock />
+
       <footer id="consona-disclaimer" className="bg-slate-900 text-slate-500 py-12 text-center text-[10px] border-t border-slate-800 space-y-2">
         <p className="max-w-3xl mx-auto px-4 uppercase tracking-widest leading-loose">
           Имеются противопоказания. Проконсультируйтесь со специалистом. <br />

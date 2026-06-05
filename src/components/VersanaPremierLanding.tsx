@@ -31,6 +31,7 @@ import {
 } from 'lucide-react';
 import { Product, Article } from '../types';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface VersanaPremierLandingProps {
   product: Product;
@@ -888,6 +889,8 @@ export const VersanaPremierLanding: React.FC<VersanaPremierLandingProps> = ({
       </section>
 
       {/* CERTIFICATION FOOTER DISCLAIMER */}
+      <AstmedTeamBlock />
+
       <footer className="border-t border-slate-200 mt-16 pt-8 max-w-5xl mx-auto px-4 text-center text-[10px] text-slate-400 space-y-2">
         <p className="uppercase tracking-widest font-bold">
           Имеются противопоказания. Перед использованием необходимо ознакомиться с инструкцией по применению и получить консультацию специалиста.

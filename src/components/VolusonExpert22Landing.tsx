@@ -31,6 +31,7 @@ import {
 } from 'lucide-react';
 import { Product, Article } from '../types';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface VolusonExpert22LandingProps {
   product: Product;
@@ -952,6 +953,8 @@ export const VolusonExpert22Landing: React.FC<VolusonExpert22LandingProps> = ({
       </section>
 
       {/* FOOTER & REGISTRATION CERTIFICATE DISCLAIMER */}
+      <AstmedTeamBlock />
+
       <footer className="bg-slate-950 text-slate-400 rounded-3xl p-6 sm:p-10 border border-slate-800 grid sm:grid-cols-3 gap-8 text-xs font-sans">
         <div className="space-y-4">
           <span className="text-white font-black tracking-widest uppercase block">GE VOLUSON EXPERT 22</span>

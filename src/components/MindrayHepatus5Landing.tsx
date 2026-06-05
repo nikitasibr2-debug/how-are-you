@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import { Product } from '../types';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface MindrayHepatus5LandingProps {
   product: Product;
@@ -2036,6 +2037,8 @@ export function MindrayHepatus5Landing({
       </section>
 
       {/* ----------------- FOOTER ----------------- */}
+      <AstmedTeamBlock />
+
       <footer className="bg-[#000509] border-t border-white/5 py-10 px-4">
         <div className="max-w-4xl mx-auto text-center space-y-4">
           <p className="text-xs text-slate-500 leading-relaxed font-sans max-w-3xl mx-auto">

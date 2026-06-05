@@ -31,6 +31,7 @@ import {
 import { Product, Article } from '../types';
 import albumImages from '../data/duet_v_album_images.json';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface DuetVLandingProps {
   product: Product;
@@ -1921,6 +1922,8 @@ export const DuetVLanding: React.FC<DuetVLandingProps> = ({
       </section>
 
       {/* BLOCK 13: ФУТЕР (ПОДДОМЕН И КОНТАКТЫ) */}
+      <AstmedTeamBlock />
+
       <footer className="bg-slate-950 text-slate-400 rounded-3xl p-6 sm:p-10 border border-slate-800 grid sm:grid-cols-3 gap-8 text-xs font-sans mt-12">
         <div className="space-y-4">
           <div className="text-white font-extrabold text-sm uppercase tracking-wider flex items-center gap-2">
