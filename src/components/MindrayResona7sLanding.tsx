@@ -1275,6 +1275,8 @@ export function MindrayResona7sLanding({
         </div>
       </section>
 
+      <AstmedTeamBlock />
+
     </div>
   );
 }
