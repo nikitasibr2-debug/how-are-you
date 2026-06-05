@@ -90,4 +90,4 @@ export interface FilterState {
   specs: Record<string, string[]>; // Arbitrary dynamic filter keys
 }
 
-export type ViewTab = 'main' | 'catalog' | 'comparison' | 'favorites' | 'services' | 'faq' | 'brands' | 'blog' | 'about' | 'product-landing' | 'duet-v-landing' | 'clearlight-landing' | 'versana-landing';
+export type ViewTab = 'main' | 'catalog' | 'comparison' | 'favorites' | 'services' | 'faq' | 'brands' | 'blog' | 'about' | 'product-landing' | 'duet-v-landing' | 'clearlight-landing' | 'ellisys-plus-s-landing' | 'contlex-landing' | 'robolex-landing' | 'logiq-fortis-r4-landing' | 'versana-premier-landing' | 'mindray-dc-90-landing' | 'mindray-consona-n8-landing' | 'voluson-expert-22-landing' | 'mindray-resona-i9-landing' | 'mindray-mx7-landing' | 'ge-versana-balance-r2-landing' | 'mindray-resona-7s-landing' | 'mindray-hepatus-5-landing';

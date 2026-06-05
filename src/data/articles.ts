@@ -29,7 +29,7 @@ export const articles: Article[] = [
     readTimeMinutes: 6,
     publishedAt: '2026-04-12',
     author: 'Александр Дроздов, Клинический аппликатор АстМед',
-    image: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&h=300&q=80'
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&h=300&q=80'
   },
   {
     id: 'endoscopy-licensing-standards',
@@ -52,7 +52,7 @@ export const articles: Article[] = [
     readTimeMinutes: 8,
     publishedAt: '2026-05-05',
     author: 'Елена Ковалева, Юрист-консультант по лицензированию АстМед',
-    image: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&w=600&h=300&q=80'
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&h=300&q=80'
   },
   {
     id: 'leasing-vs-credit-equipment',
@@ -75,7 +75,7 @@ export const articles: Article[] = [
     readTimeMinutes: 5,
     publishedAt: '2026-05-18',
     author: 'Игорь Смирнов, Руководитель финансового отдела АстМед',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&h=300&q=80'
+    image: 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&h=300&q=80'
   },
   {
     id: 'rf-lifting-minuses-and-danger',

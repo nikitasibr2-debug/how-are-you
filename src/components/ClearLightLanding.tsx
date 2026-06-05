@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { 
   ArrowLeft, 
+  ArrowUp,
   Heart, 
   ArrowRightLeft, 
   Award, 
@@ -38,8 +39,7 @@ import {
   User
 } from 'lucide-react';
 import { Product, Article } from '../types';
-import albumImagesRaw from '../data/clearlight_album_images.json';
-const albumImages = albumImagesRaw as Record<string, string>;
+import albumImages from '../data/clearlight_album_images.json';
 import { logger } from '../lib/logger';
 
 interface ClearLightLandingProps {
@@ -63,6 +63,25 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
   triggerQuote,
   onBackToCatalog
 }) => {
+  // Состояние отображения кнопки наверх и назад в каталог
+  const [showScrollTop, setShowScrollTop] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 405) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Локальные состояния интерактива
   const [activeTab, setActiveTab] = useState<'tech' | 'roi' | 'trust' | 'objections' | 'cases' | 'faq'>('tech');
 
@@ -106,6 +125,11 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
   const [isDemoModalOpen, setIsDemoModalOpen] = useState<boolean>(false);
   const [demoName, setDemoName] = useState<string>('');
   const [demoPhone, setDemoPhone] = useState<string>('');
+
+  // Запись и лид-форма для скачивания PDF документов
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState<boolean>(false);
+  const [downloadName, setDownloadName] = useState<string>('');
+  const [downloadPhone, setDownloadPhone] = useState<string>('');
 
   // Гарантийные условия и Сводка поломок
   const [activeWrenchPoint, setActiveWrenchPoint] = useState<number>(0);
@@ -191,8 +215,8 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
       problem: "Пациент 19 лет. Угревая сыпь, воспалительные папулы, застойные синюшные пятна постакне на щеках и подбородке. Кожа жирная, пористая.",
       solution: "Курс из 4 процедур на ClearLight с интервалом 14 дней. Использовали фильтр 430 нм для подавления бактерий, затем 585 нм для экспресс-рассасывания застойных пятен.",
       result: "Воспаления сокращены на 92%. Саловыделение снизилось на 40%, застойные пятна практически нивелированы. Без применения системных ретиноидов.",
-      photoBefore: albumImages["main-product.jpg"] || "/clearlight/main-product.jpg",
-      photoAfter: "/clearlight/device-full.jpg",
+      photoBefore: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&h=400&q=80",
+      photoAfter: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=600&h=400&q=80",
       filterUsed: "430 нм & 585 нм"
     },
     pigment: {
@@ -288,65 +312,69 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
   };
 
   const handleBrochureDownload = () => {
-    logger.info('Пользователь скачал РУ Росздравнадзора и брошюру ClearLight PDF', {
+    logger.info('Пользователь кликнул Скачать PDF (инициировано модальное окно сбора контактов)', {
       productId: product.id,
       timestamp: new Date().toISOString()
     });
-    alert('Скачивание PDF-файла "РУ_РФ_ClearLight_IPL.pdf" и "Руководство_EunSung.pdf" начнется автоматически в новой вкладке.');
+    setIsDownloadModalOpen(true);
+  };
+
+  const handleDownloadConfirm = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!downloadName.trim() || !downloadPhone.trim()) {
+      logger.warn('Попытка скачать документы без заполнения обязательных полей');
+      return;
+    }
+
+    logger.info('Пользователь успешно подтвердил контакты и скачал РУ Росздравнадзора и брошюру ClearLight PDF', {
+      name: downloadName,
+      phone: downloadPhone,
+      productId: product.id,
+      timestamp: new Date().toISOString()
+    });
+
+    setIsDownloadModalOpen(false);
+    alert(`Спасибо, ${downloadName}! Ссылка на скачивание PDF-файлов "РУ_РФ_ClearLight_IPL.pdf" и "Руководство_EunSung.pdf" отправлена на номер ${downloadPhone}, и файлы автоматически формируются для загрузки.`);
   };
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans" id="clearlight-landing">
-      {/* Верхняя панель навигации */}
-      <header className="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800 py-4 px-6 text-white">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <button 
+      {/* Верхняя панель навигации с хлебными крошками и действиями */}
+      <header className="relative z-10 bg-slate-950 border-b border-slate-800 py-4 px-6 text-white">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full md:w-auto">
+            <button
               onClick={onBackToCatalog}
-              className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors font-medium text-sm py-1.5 px-3 rounded-lg border border-slate-800 bg-slate-900/60 hover:bg-slate-800"
+              className="flex items-center justify-center gap-2 text-slate-300 hover:text-white transition group cursor-pointer border border-slate-800 bg-slate-900/60 py-2 px-4 rounded-xl hover:bg-slate-800 text-xs font-bold shrink-0 w-full sm:w-auto"
               id="back-to-catalog-btn"
             >
-              <ArrowLeft className="w-4 h-4" />
-              Назад в каталог
+              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              Вернуться в каталог
             </button>
-            <div className="h-6 w-px bg-slate-800 hidden sm:block"></div>
-            <div>
-              <span className="text-xs text-sky-400 font-mono font-semibold tracking-wider uppercase block">Лидер эстетической косметологии</span>
-              <h1 className="text-lg font-bold text-white font-sans tracking-tight">ClearLight IPL EunSung Global</h1>
+            <div className="text-xs text-slate-400 font-medium font-sans flex items-center gap-1.5 flex-wrap px-1">
+              <span onClick={onBackToCatalog} className="hover:text-white hover:underline transition cursor-pointer">Главная</span>
+              <span className="text-slate-600">/</span>
+              <span onClick={onBackToCatalog} className="hover:text-white hover:underline transition cursor-pointer">Каталог</span>
+              <span className="text-slate-600">/</span>
+              <span onClick={onBackToCatalog} className="hover:text-white hover:underline transition cursor-pointer">Косметология</span>
+              <span className="text-slate-600">/</span>
+              <span className="text-slate-200 font-bold truncate max-w-[240px] sm:max-w-none">{product.name}</span>
             </div>
           </div>
-
-          <div className="flex items-center gap-3">
+          <div className="flex gap-2.5 items-center w-full md:w-auto justify-between sm:justify-start">
             <button
               onClick={() => toggleFavorite(product.id)}
-              className={`p-2.5 rounded-full border transition-all ${
-                isFavorited 
-                  ? 'bg-rose-950/40 border-rose-800 text-rose-400 hover:bg-rose-900/40' 
-                  : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-850'
-              }`}
-              title={isFavorited ? 'Убрать из избранного' : 'Добавить в избранное'}
-              id="favorite-toggle-btn"
+              className={`flex-1 sm:flex-none justify-center px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 cursor-pointer ${favorites.includes(product.id) ? 'bg-rose-950/40 border-rose-800 text-rose-400' : 'bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-850 hover:text-white'}`}
             >
-              <Heart className={`w-5 h-5 ${isFavorited ? 'fill-current' : ''}`} />
+              <Heart className={`w-4 h-4 ${favorites.includes(product.id) ? 'fill-rose-500 text-rose-500' : ''}`} />
+              <span>{favorites.includes(product.id) ? 'В избранном' : 'В избранное'}</span>
             </button>
             <button
               onClick={() => toggleCompare(product.id)}
-              className={`p-2.5 rounded-full border transition-all ${
-                isCompared 
-                  ? 'bg-sky-950/40 border-sky-800 text-sky-400 hover:bg-sky-900/40' 
-                  : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-850'
-              }`}
-              title={isCompared ? 'Убрать из сравнения' : 'Добавить в сравнение'}
-              id="compare-toggle-btn"
+              className={`flex-1 sm:flex-none justify-center px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 cursor-pointer ${compareList.includes(product.id) ? 'bg-cyan-950/40 border-cyan-800 text-cyan-400' : 'bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-850 hover:text-white'}`}
             >
-              <ArrowRightLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => triggerQuote(product, 'kp')}
-              className="bg-sky-500 hover:bg-sky-600 text-white font-semibold text-sm py-2.5 px-5 rounded-lg shadow-sm hover:shadow transition-all"
-              id="request-kp-top-btn"
-            >
-              Получить расчет КП
+              <ArrowRightLeft className="w-4 h-4" />
+              <span>{compareList.includes(product.id) ? 'В сравнении' : 'Добавить к сравнению'}</span>
             </button>
           </div>
         </div>
@@ -429,7 +457,7 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
             <div className="relative bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-2xl max-w-md w-full">
               <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-slate-950 flex items-center justify-center">
                 <img 
-                  src={albumImages["main-product.jpg"] || "/clearlight/main-product.jpg"} 
+                  src={albumImages["179A2226.png"]} 
                   alt="ClearLight IPL Аппарат" 
                   className="object-contain max-h-full max-w-full p-4 hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
@@ -449,7 +477,7 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
               {/* Миниатюры других коммерческих ракурсов */}
               <div className="grid grid-cols-3 gap-2 mt-3">
                 <div className="aspect-square bg-slate-950 border border-slate-800 rounded-lg p-2 flex items-center justify-center cursor-pointer hover:border-sky-505 transition-colors">
-                  <img src={albumImages["main-product.jpg"] || "/clearlight/main-product.jpg"} alt="Манипула" className="max-h-full object-contain" referrerPolicy="no-referrer" />
+                  <img src={albumImages["179A2260.png"]} alt="Манипула" className="max-h-full object-contain" referrerPolicy="no-referrer" />
                 </div>
                 <div className="aspect-square bg-slate-950 border border-slate-800 rounded-lg p-2 flex items-center justify-center cursor-pointer hover:border-sky-505 transition-colors">
                   <img src={albumImages["5113.jpg"]} alt="Узел зажигания" className="max-h-full object-contain" referrerPolicy="no-referrer" />
@@ -924,50 +952,114 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
               
               {/* Левая вкладка */}
               <div className="lg:col-span-4 bg-slate-50 border-r border-slate-200 p-6 space-y-1">
-                <button
-                  onClick={() => setObjectionActiveTab('roi')}
-                  className={`w-full text-left p-4.5 rounded-xl transition-all font-bold ${
-                    objectionActiveTab === 'roi' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
-                  }`}
-                >
-                  У нас нет столько денег / окупаемость
-                </button>
-                <button
-                  onClick={() => setObjectionActiveTab('pain')}
-                  className={`w-full text-left p-4.5 rounded-xl transition-all font-bold ${
-                    objectionActiveTab === 'pain' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
-                  }`}
-                >
-                  Пациенты боятся ожогов и сильной боли
-                </button>
-                <button
-                  onClick={() => setObjectionActiveTab('sanpin')}
-                  className={`w-full text-left p-4.5 rounded-xl transition-all font-bold ${
-                    objectionActiveTab === 'sanpin' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
-                  }`}
-                >
-                  Подойдет ли наш кабинет под СанПиН?
-                </button>
-                <button
-                  onClick={() => setObjectionActiveTab('service')}
-                  className={`w-full text-left p-4.5 rounded-xl transition-all font-bold ${
-                    objectionActiveTab === 'service' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
-                  }`}
-                >
-                  Что будем делать при поломке?
-                </button>
-                <button
-                  onClick={() => setObjectionActiveTab('learning')}
-                  className={`w-full text-left p-4.5 rounded-xl transition-all font-bold ${
-                    objectionActiveTab === 'learning' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
-                  }`}
-                >
-                  Сможем ли мы легко обучить персонал?
-                </button>
+                <div className="space-y-2 w-full text-left">
+                  <button
+                    onClick={() => setObjectionActiveTab('roi')}
+                    className={`w-full text-left p-4.5 rounded-xl transition-all font-bold flex justify-between items-center ${
+                      objectionActiveTab === 'roi' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
+                    }`}
+                  >
+                    <span>У нас нет столько денег / окупаемость</span>
+                    <ChevronRight className={`w-4 h-4 transition ${objectionActiveTab === 'roi' ? 'rotate-90 text-sky-600' : 'text-slate-400'} lg:rotate-0`} />
+                  </button>
+                  {objectionActiveTab === 'roi' && (
+                    <div className="block lg:hidden bg-white border border-slate-200 rounded-xl p-5 space-y-3 text-xs text-slate-650 text-left animate-fade-in shadow-sm">
+                      <span className="text-[10px] font-mono font-bold text-sky-600 uppercase">Окупаемость бьюти-бизнеса</span>
+                      <h4 className="text-sm font-bold text-slate-900">«Для нас это колоссально дорого...»</h4>
+                      <p className="leading-relaxed">
+                        Покупка аппарата фотоомоложения Clear Light — это приобретение финансового актива с рекордной маржинальностью. Себестоимость одной вспышки составляет менее 4 копеек! Средний доход при 3 пациентах в день составляет от 450 000 ₽ чистыми в месяц. Окупаемость достигается за рекордные 3-4 месяца.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-2 w-full text-left">
+                  <button
+                    onClick={() => setObjectionActiveTab('pain')}
+                    className={`w-full text-left p-4.5 rounded-xl transition-all font-bold flex justify-between items-center ${
+                      objectionActiveTab === 'pain' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
+                    }`}
+                  >
+                    <span>Пациенты боятся ожогов и сильной боли</span>
+                    <ChevronRight className={`w-4 h-4 transition ${objectionActiveTab === 'pain' ? 'rotate-90 text-sky-600' : 'text-slate-400'} lg:rotate-0`} />
+                  </button>
+                  {objectionActiveTab === 'pain' && (
+                    <div className="block lg:hidden bg-white border border-slate-200 rounded-xl p-5 space-y-3 text-xs text-slate-655 text-left animate-fade-in shadow-sm">
+                      <span className="text-[10px] font-mono font-bold text-sky-600 uppercase">Защита и комфорт</span>
+                      <h4 className="text-sm font-bold text-slate-900">«Боимся побочных эффектов и сильной боли...»</h4>
+                      <p className="leading-relaxed">
+                        Консоль оборудована усовершенствованной контактной системой охлаждения кристалла сапфира со стабильной температурой до -5°C. Процедура лазерного/IPL омоложения проходит абсолютно комфортно, без ожогов и необходимости анестезии.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-2 w-full text-left">
+                  <button
+                    onClick={() => setObjectionActiveTab('sanpin')}
+                    className={`w-full text-left p-4.5 rounded-xl transition-all font-bold flex justify-between items-center ${
+                      objectionActiveTab === 'sanpin' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
+                    }`}
+                  >
+                    <span>Подойдет ли наш кабинет под СанПиН?</span>
+                    <ChevronRight className={`w-4 h-4 transition ${objectionActiveTab === 'sanpin' ? 'rotate-90 text-sky-600' : 'text-slate-400'} lg:rotate-0`} />
+                  </button>
+                  {objectionActiveTab === 'sanpin' && (
+                    <div className="block lg:hidden bg-white border border-slate-200 rounded-xl p-5 space-y-3 text-xs text-slate-655 text-left animate-fade-in shadow-sm">
+                      <span className="text-[10px] font-mono font-bold text-sky-600 uppercase">Лицензирование</span>
+                      <h4 className="text-sm font-bold text-slate-900">«А вдруг мы не пройдем проверку СанПиН?»</h4>
+                      <p className="leading-relaxed">
+                        Предоставляем полный комплект юридических документов и Регистрационное удостоверение (РУ) Росздравнадзора. Аппарат на 100% готов к установке в медицинских центрах и салонах красоты с медицинской лицензией.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-2 w-full text-left">
+                  <button
+                    onClick={() => setObjectionActiveTab('service')}
+                    className={`w-full text-left p-4.5 rounded-xl transition-all font-bold flex justify-between items-center ${
+                      objectionActiveTab === 'service' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
+                    }`}
+                  >
+                    <span>Что будем делать при поломке?</span>
+                    <ChevronRight className={`w-4 h-4 transition ${objectionActiveTab === 'service' ? 'rotate-90 text-sky-600' : 'text-slate-400'} lg:rotate-0`} />
+                  </button>
+                  {objectionActiveTab === 'service' && (
+                    <div className="block lg:hidden bg-white border border-slate-200 rounded-xl p-5 space-y-3 text-xs text-slate-655 text-left animate-fade-in shadow-sm">
+                      <span className="text-[10px] font-mono font-bold text-sky-600 uppercase">SLA Техподдержка</span>
+                      <h4 className="text-sm font-bold text-slate-900">«Боимся простоев при технических неполадках?»</h4>
+                      <p className="leading-relaxed">
+                        Собственная сервисная служба АстМед предоставляет круглосуточную техническую и клиническую поддержку. При необходимости высылаем подменный аппарат, чтобы ваш бизнес работал стабильно и без простоев.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-2 w-full text-left">
+                  <button
+                    onClick={() => setObjectionActiveTab('learning')}
+                    className={`w-full text-left p-4.5 rounded-xl transition-all font-bold flex justify-between items-center ${
+                      objectionActiveTab === 'learning' ? 'bg-white shadow text-sky-600' : 'text-slate-600 hover:bg-slate-100'
+                    }`}
+                  >
+                    <span>Сможем ли мы легко обучить персонал?</span>
+                    <ChevronRight className={`w-4 h-4 transition ${objectionActiveTab === 'learning' ? 'rotate-90 text-sky-600' : 'text-slate-400'} lg:rotate-0`} />
+                  </button>
+                  {objectionActiveTab === 'learning' && (
+                    <div className="block lg:hidden bg-white border border-slate-200 rounded-xl p-5 space-y-3 text-xs text-slate-655 text-left animate-fade-in shadow-sm">
+                      <span className="text-[10px] font-mono font-bold text-sky-600 uppercase">Обучение врачей</span>
+                      <h4 className="text-sm font-bold text-slate-900">«Трудно ли врачам освоить работу на IPL?»</h4>
+                      <p className="leading-relaxed">
+                        Мы предоставляем бесплатное сертифицированное обучение для ваших врачей-косметологов. Наш штатный клинический тренер поставит руку врачу и предоставит проверенные клинические протоколы.
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
 
-              {/* Правый контент возражения */}
-              <div className="lg:col-span-8 p-8 md:p-12 space-y-6 flex flex-col justify-between">
+               {/* Правый контент возражения */}
+               <div className="hidden lg:flex lg:col-span-8 p-8 md:p-12 space-y-6 flex-col justify-between">
                 
                 {objectionActiveTab === 'roi' && (
                   <div className="space-y-4">
@@ -1490,6 +1582,47 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
         </div>
       </section>
 
+      {/* SECTION: НАША КОМАНДА "ASTMED" */}
+      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-8 mt-12 max-w-7xl mx-auto" id="astmed-team-trust">
+        <div className="grid lg:grid-cols-12 gap-8 items-center text-slate-100">
+          <div className="lg:col-span-5 relative group overflow-hidden rounded-2xl border border-slate-800">
+            <img 
+              src="/images/team_aesthet.jpg" 
+              alt="Команда Astmed" 
+              className="w-full h-auto object-cover rounded-2xl transform transition-transform duration-500 group-hover:scale-105" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
+              <span className="text-white text-xs font-mono tracking-widest bg-cyan-600 px-2.5 py-1 rounded font-bold">ОФИС И КОМАНДА ASTMED</span>
+            </div>
+          </div>
+          <div className="lg:col-span-7 space-y-5">
+            <div className="inline-flex items-center gap-2 bg-cyan-950/40 border border-cyan-800/60 px-3 py-1.5 rounded-full text-cyan-400 text-xs font-bold uppercase tracking-wider font-mono">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              Нам доверяют лучшие клиники РФ
+            </div>
+            <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight leading-none">
+              Команда экспертов «Astmed» — Ваша опора на каждом этапе
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Каждое поставляемое устройство — это не просто коробка, а долгосрочное партнерство. Наша сертифицированная команда <strong className="text-white">Astmed</strong> состоит из высококлассных инженеров медтехники, практикующих врачей-косметологов и сертифицированных бизнес-консультантов.
+            </p>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Мы лично доставляем оборудование по всей России, проводим пусконаладочные работы, занимаемся обучением вашего персонала с выдачей дипломов и обеспечиваем молниеносное сервисное сопровождение 24/7. Покупая у нас, вы защищаете клинику от простоев и получаете поток довольных пациентов с первого дня!
+            </p>
+            <div className="grid grid-cols-2 gap-4 pt-2 font-sans">
+              <div className="border border-slate-800 bg-slate-950/50 p-3 rounded-xl">
+                <span className="text-sm font-black text-cyan-400 block font-mono">100% Честность</span>
+                <span className="text-[10px] text-slate-500">Живой показ и тест-драйв оборудования</span>
+              </div>
+              <div className="border border-slate-800 bg-slate-950/50 p-3 rounded-xl">
+                <span className="text-sm font-black text-cyan-400 block font-mono">Официальный СЦ</span>
+                <span className="text-[10px] text-slate-500">Инженеры с лицензией Росздравнадзора</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Футер лендинга */}
       <footer className="bg-slate-900 text-slate-400 py-12 px-6 border-t border-slate-800 text-xs">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
@@ -1609,6 +1742,124 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
             </form>
           </div>
         </div>
+      )}
+
+      {/* Модальное окно сбора контактов перед скачиванием PDF */}
+      {isDownloadModalOpen && (
+        <div 
+          className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto animate-fade-in"
+          id="download-pdf-modal-overlay"
+        >
+          <div 
+            className="bg-slate-900 border border-slate-800 max-w-md w-full rounded-2xl shadow-2xl relative overflow-hidden text-left p-6 md:p-8 space-y-6"
+            id="download-pdf-modal-container"
+          >
+            {/* Кнопка закрытия */}
+            <button
+              onClick={() => {
+                logger.info('Пользователь закрыл модальное окно скачивания PDF без ввода данных');
+                setIsDownloadModalOpen(false);
+              }}
+              className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-1.5 hover:bg-slate-800/50 rounded-lg"
+              id="download-modal-close-btn"
+              aria-label="Закрыть окно"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Иконка и Заголовки */}
+            <div className="space-y-2 text-center" id="download-modal-header">
+              <div className="w-12 h-12 bg-sky-500/10 text-sky-400 border border-sky-500/20 rounded-xl flex items-center justify-center mx-auto mb-2 font-bold animate-pulse">
+                <Download className="w-6 h-6 text-sky-400" />
+              </div>
+              <h4 className="text-xl font-bold text-white tracking-tight leading-snug">Скачивание пакета документов</h4>
+              <p className="text-xs text-slate-400 leading-relaxed max-w-xs mx-auto">
+                Введите контактный номер телефона для подтверждения доступа. Мы пришлем вам прямые ссылки на РУ Росздравнадзора и брошюру.
+              </p>
+            </div>
+
+            {/* Предметка документов */}
+            <div className="bg-slate-950/50 rounded-xl p-4 border border-slate-800 space-y-2 text-[11px] text-slate-300" id="download-modal-list">
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400 font-bold">✓</span>
+                <span>Регистрационное Удостоверение Росздравнадзора (РУ_РФ_ClearLight_IPL.pdf)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400 font-bold">✓</span>
+                <span>Полное методическое руководство EunSung (Руководство_EunSung.pdf)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400 font-bold">✓</span>
+                <span>Финансовый калькулятор окупаемости ClearLight IPL</span>
+              </div>
+            </div>
+
+            {/* Форма */}
+            <form onSubmit={handleDownloadConfirm} className="space-y-4" id="download-modal-form">
+              {/* Поле Имя */}
+              <div className="space-y-1.5">
+                <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">Ваше имя</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <User className="h-4 w-4 text-slate-500" />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Ирина Викторовна"
+                    value={downloadName}
+                    onChange={(e) => setDownloadName(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 focus:border-sky-500 rounded-xl p-3 pl-10 text-sm text-white placeholder-slate-600 focus:outline-none transition-colors"
+                  />
+                </div>
+              </div>
+
+              {/* Поле Телефон */}
+              <div className="space-y-1.5">
+                <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider">Номер телефона для получения ссылок</label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Phone className="h-4 w-4 text-slate-500" />
+                  </div>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+7 (999) 123-45-67"
+                    value={downloadPhone}
+                    onChange={(e) => setDownloadPhone(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 focus:border-sky-500 rounded-xl p-3 pl-10 text-sm text-white placeholder-slate-600 font-mono focus:outline-none transition-colors"
+                  />
+                </div>
+              </div>
+
+              {/* Кнопка отправки */}
+              <button
+                type="submit"
+                className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 mt-2"
+                id="doc-download-modal-submit-btn"
+              >
+                <Download className="w-4 h-4" />
+                <span>Завершить и скачать пакет (PDF)</span>
+              </button>
+
+              <p className="text-[9px] text-slate-500 text-center leading-relaxed">
+                Настоящим вы выражаете согласие на обработку персональных данных в соответствии с ФЗ РФ №152-ФЗ.
+              </p>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* 🚀 FLOAT NAV WIDGET FOR QUICK RETURN */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 bg-slate-900 hover:bg-[#00AEEF] text-white hover:text-slate-950 p-3 rounded-full shadow-2xl transition cursor-pointer border border-slate-800 flex items-center justify-center animate-fade-in"
+          title="Наверх"
+          id="clearlight-scroll-top"
+        >
+          <ArrowUp className="w-5 h-5" />
+        </button>
       )}
     </div>
   );
