@@ -262,7 +262,7 @@ export const products: Product[] = [
 
   {
     id: 'duet-v',
-    name: 'Антивозрастная RF-система Duet V',
+    name: 'Duet V  ',
     brandId: 'eunsung',
     brandName: 'EunSung Global',
     categoryId: 'cosmetology',
@@ -366,7 +366,7 @@ export const products: Product[] = [
   },
   {
     id: 'clearlight',
-    name: 'Аппарат фотоомоложения IPL ClearLight',
+    name: ' IPL ClearLight',
     brandId: 'eunsung',
     brandName: 'EunSung Global',
     categoryId: 'cosmetology',
@@ -423,7 +423,7 @@ export const products: Product[] = [
   },
   {
     id: 'ellisys-plus-s',
-    name: 'Аппарат микроигольчатого RF-лифтинга Ellisys Plus S',
+    name: ' Ellisys Plus S',
     brandId: 'eunsung',
     brandName: 'EunSung Global',
     categoryId: 'cosmetology',
@@ -479,7 +479,7 @@ export const products: Product[] = [
   },
   {
     id: 'contlex',
-    name: 'Аппарат ультразвукового SMAS-лифтинга Contlex',
+    name: ' SMAS-лифтинга Contlex',
     brandId: 'eunsung',
     brandName: 'EunSung Global',
     categoryId: 'cosmetology',
@@ -538,7 +538,7 @@ export const products: Product[] = [
   },
   {
     id: 'robolex',
-    name: 'Интеллектуальная beauty-платформа Robolex',
+    name: ' Robolex',
     brandId: 'eunsung',
     brandName: 'EunSung Global',
     categoryId: 'cosmetology',
