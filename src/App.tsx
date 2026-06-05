@@ -756,8 +756,8 @@ export default function App() {
                         { name: '🔬 Эндоскопия', id: 'flex_endoscopy' },
                         { name: '🩻 МРТ / КТ', id: 'rad_diag' },
                         { name: '💨 ИВЛ и Наркоз', id: 'reanimation' },
-                        { name: '💋 Косметология & РФ', id: 'cosmetology' },
-                        { name: '🏥 Хирург. столы', id: 'surgery' }
+                        { name: 'Косметология', id: 'cosmetology' },
+                        { name: 'Хирург. столы', id: 'surgery' }
                       ].map((chip) => (
                         <button
                           key={chip.id}
