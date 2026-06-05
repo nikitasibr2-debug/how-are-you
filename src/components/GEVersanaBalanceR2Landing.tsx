@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { Product, Article } from '../types';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface GEVersanaBalanceR2LandingProps {
   product: Product;
@@ -1387,6 +1388,8 @@ export function GEVersanaBalanceR2Landing({
       </section>
 
       {/* FOOTER */}
+      <AstmedTeamBlock />
+
       <footer className="bg-[#000509] py-10 sm:py-16 text-center border-t border-slate-900 px-6">
         <div className="max-w-4xl mx-auto space-y-4 text-[11px] text-slate-500 leading-relaxed font-sans">
           <p className="uppercase tracking-widest text-[#00AEEF] font-bold text-[10px] font-mono">

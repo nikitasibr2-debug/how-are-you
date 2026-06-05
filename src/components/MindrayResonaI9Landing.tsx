@@ -31,6 +31,7 @@ import {
 } from 'lucide-react';
 import { Product, Article } from '../types';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface MindrayResonaI9LandingProps {
   product: Product;
@@ -934,6 +935,8 @@ export function MindrayResonaI9Landing({
       </section>
 
       {/* 9. LEGAL MEDICAL CERTIFICATION DISCLAIMER */}
+      <AstmedTeamBlock />
+
       <footer className="max-w-5xl mx-auto pt-6 border-t border-slate-200 text-center space-y-4 pb-12">
         <p className="text-[10px] text-slate-400 uppercase tracking-widest leading-relaxed max-w-2xl mx-auto font-mono">
           ПРЕДУПРЕЖДЕНИЕ: ДАННАЯ ИНФОРМАЦИЯ ПРЕДНАЗНАЧЕНА ИСКЛЮЧИТЕЛЬНО ДЛЯ МЕДИЦИНСКИХ СПЕЦИАЛИСТОВ И ОРГАНИЗАЦИЙ ЗДРАВООХРАНЕНИЯ. ОБОРУДОВАНИЕ ИМЕЕТ РЕГИСТРАЦИОННОЕ УДОСТОВЕРЕНИЕ МИНЗДРАВА РФ И СЕРТИФИЦИРОВАНО В СООТВЕТСТВИИ С ЗАКОНОДАТЕЛЬСТВОМ.

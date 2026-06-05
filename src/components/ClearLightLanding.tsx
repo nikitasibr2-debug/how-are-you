@@ -41,6 +41,7 @@ import {
 import { Product, Article } from '../types';
 import albumImages from '../data/clearlight_album_images.json';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface ClearLightLandingProps {
   product: Product;
@@ -1624,6 +1625,8 @@ export const ClearLightLanding: React.FC<ClearLightLandingProps> = ({
       </section>
 
       {/* Футер лендинга */}
+      <AstmedTeamBlock />
+
       <footer className="bg-slate-900 text-slate-400 py-12 px-6 border-t border-slate-800 text-xs">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1">

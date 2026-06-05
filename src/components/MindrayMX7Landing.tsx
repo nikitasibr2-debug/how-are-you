@@ -38,6 +38,7 @@ import {
 } from 'lucide-react';
 import { Product, Article } from '../types';
 import { logger } from '../lib/logger';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 
 interface MindrayMX7LandingProps {
   product: Product;
@@ -878,6 +879,8 @@ export function MindrayMX7Landing({
       </section>
 
       {/* 10. SOCIAL PROOF & REGISTRATION LICENSE DISCLAIMER */}
+      <AstmedTeamBlock />
+
       <footer className="text-center space-y-3 pt-6 border-t border-slate-100 max-w-6xl mx-auto" id="mx7-landing-license_disclaimer">
         <div className="flex flex-wrap justify-center gap-4 text-xs font-mono text-slate-400">
           <span>СЕ • FDA • Сертифицировано</span>
