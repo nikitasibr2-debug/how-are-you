@@ -9,8 +9,98 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Volusonexpert22RouteImport } from './routes/volusonexpert22'
+import { Route as VersanapremierRouteImport } from './routes/versanapremier'
+import { Route as VersanabalanceRouteImport } from './routes/versanabalance'
+import { Route as RobolexRouteImport } from './routes/robolex'
+import { Route as Resonai9RouteImport } from './routes/resonai9'
+import { Route as Resona7sRouteImport } from './routes/resona7s'
+import { Route as Mx7RouteImport } from './routes/mx7'
+import { Route as LogiqfortisRouteImport } from './routes/logiqfortis'
+import { Route as Hepatus5RouteImport } from './routes/hepatus5'
+import { Route as EllisysplusRouteImport } from './routes/ellisysplus'
+import { Route as DuetvRouteImport } from './routes/duetv'
+import { Route as Dc90RouteImport } from './routes/dc90'
+import { Route as ContlexRouteImport } from './routes/contlex'
+import { Route as Consonan8RouteImport } from './routes/consonan8'
+import { Route as ClearlightRouteImport } from './routes/clearlight'
 import { Route as IndexRouteImport } from './routes/index'
 
+const Volusonexpert22Route = Volusonexpert22RouteImport.update({
+  id: '/volusonexpert22',
+  path: '/volusonexpert22',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VersanapremierRoute = VersanapremierRouteImport.update({
+  id: '/versanapremier',
+  path: '/versanapremier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VersanabalanceRoute = VersanabalanceRouteImport.update({
+  id: '/versanabalance',
+  path: '/versanabalance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobolexRoute = RobolexRouteImport.update({
+  id: '/robolex',
+  path: '/robolex',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Resonai9Route = Resonai9RouteImport.update({
+  id: '/resonai9',
+  path: '/resonai9',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Resona7sRoute = Resona7sRouteImport.update({
+  id: '/resona7s',
+  path: '/resona7s',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Mx7Route = Mx7RouteImport.update({
+  id: '/mx7',
+  path: '/mx7',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogiqfortisRoute = LogiqfortisRouteImport.update({
+  id: '/logiqfortis',
+  path: '/logiqfortis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Hepatus5Route = Hepatus5RouteImport.update({
+  id: '/hepatus5',
+  path: '/hepatus5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EllisysplusRoute = EllisysplusRouteImport.update({
+  id: '/ellisysplus',
+  path: '/ellisysplus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuetvRoute = DuetvRouteImport.update({
+  id: '/duetv',
+  path: '/duetv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Dc90Route = Dc90RouteImport.update({
+  id: '/dc90',
+  path: '/dc90',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContlexRoute = ContlexRouteImport.update({
+  id: '/contlex',
+  path: '/contlex',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Consonan8Route = Consonan8RouteImport.update({
+  id: '/consonan8',
+  path: '/consonan8',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClearlightRoute = ClearlightRouteImport.update({
+  id: '/clearlight',
+  path: '/clearlight',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +109,242 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/clearlight': typeof ClearlightRoute
+  '/consonan8': typeof Consonan8Route
+  '/contlex': typeof ContlexRoute
+  '/dc90': typeof Dc90Route
+  '/duetv': typeof DuetvRoute
+  '/ellisysplus': typeof EllisysplusRoute
+  '/hepatus5': typeof Hepatus5Route
+  '/logiqfortis': typeof LogiqfortisRoute
+  '/mx7': typeof Mx7Route
+  '/resona7s': typeof Resona7sRoute
+  '/resonai9': typeof Resonai9Route
+  '/robolex': typeof RobolexRoute
+  '/versanabalance': typeof VersanabalanceRoute
+  '/versanapremier': typeof VersanapremierRoute
+  '/volusonexpert22': typeof Volusonexpert22Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/clearlight': typeof ClearlightRoute
+  '/consonan8': typeof Consonan8Route
+  '/contlex': typeof ContlexRoute
+  '/dc90': typeof Dc90Route
+  '/duetv': typeof DuetvRoute
+  '/ellisysplus': typeof EllisysplusRoute
+  '/hepatus5': typeof Hepatus5Route
+  '/logiqfortis': typeof LogiqfortisRoute
+  '/mx7': typeof Mx7Route
+  '/resona7s': typeof Resona7sRoute
+  '/resonai9': typeof Resonai9Route
+  '/robolex': typeof RobolexRoute
+  '/versanabalance': typeof VersanabalanceRoute
+  '/versanapremier': typeof VersanapremierRoute
+  '/volusonexpert22': typeof Volusonexpert22Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/clearlight': typeof ClearlightRoute
+  '/consonan8': typeof Consonan8Route
+  '/contlex': typeof ContlexRoute
+  '/dc90': typeof Dc90Route
+  '/duetv': typeof DuetvRoute
+  '/ellisysplus': typeof EllisysplusRoute
+  '/hepatus5': typeof Hepatus5Route
+  '/logiqfortis': typeof LogiqfortisRoute
+  '/mx7': typeof Mx7Route
+  '/resona7s': typeof Resona7sRoute
+  '/resonai9': typeof Resonai9Route
+  '/robolex': typeof RobolexRoute
+  '/versanabalance': typeof VersanabalanceRoute
+  '/versanapremier': typeof VersanapremierRoute
+  '/volusonexpert22': typeof Volusonexpert22Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/clearlight'
+    | '/consonan8'
+    | '/contlex'
+    | '/dc90'
+    | '/duetv'
+    | '/ellisysplus'
+    | '/hepatus5'
+    | '/logiqfortis'
+    | '/mx7'
+    | '/resona7s'
+    | '/resonai9'
+    | '/robolex'
+    | '/versanabalance'
+    | '/versanapremier'
+    | '/volusonexpert22'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/clearlight'
+    | '/consonan8'
+    | '/contlex'
+    | '/dc90'
+    | '/duetv'
+    | '/ellisysplus'
+    | '/hepatus5'
+    | '/logiqfortis'
+    | '/mx7'
+    | '/resona7s'
+    | '/resonai9'
+    | '/robolex'
+    | '/versanabalance'
+    | '/versanapremier'
+    | '/volusonexpert22'
+  id:
+    | '__root__'
+    | '/'
+    | '/clearlight'
+    | '/consonan8'
+    | '/contlex'
+    | '/dc90'
+    | '/duetv'
+    | '/ellisysplus'
+    | '/hepatus5'
+    | '/logiqfortis'
+    | '/mx7'
+    | '/resona7s'
+    | '/resonai9'
+    | '/robolex'
+    | '/versanabalance'
+    | '/versanapremier'
+    | '/volusonexpert22'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClearlightRoute: typeof ClearlightRoute
+  Consonan8Route: typeof Consonan8Route
+  ContlexRoute: typeof ContlexRoute
+  Dc90Route: typeof Dc90Route
+  DuetvRoute: typeof DuetvRoute
+  EllisysplusRoute: typeof EllisysplusRoute
+  Hepatus5Route: typeof Hepatus5Route
+  LogiqfortisRoute: typeof LogiqfortisRoute
+  Mx7Route: typeof Mx7Route
+  Resona7sRoute: typeof Resona7sRoute
+  Resonai9Route: typeof Resonai9Route
+  RobolexRoute: typeof RobolexRoute
+  VersanabalanceRoute: typeof VersanabalanceRoute
+  VersanapremierRoute: typeof VersanapremierRoute
+  Volusonexpert22Route: typeof Volusonexpert22Route
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/volusonexpert22': {
+      id: '/volusonexpert22'
+      path: '/volusonexpert22'
+      fullPath: '/volusonexpert22'
+      preLoaderRoute: typeof Volusonexpert22RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/versanapremier': {
+      id: '/versanapremier'
+      path: '/versanapremier'
+      fullPath: '/versanapremier'
+      preLoaderRoute: typeof VersanapremierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/versanabalance': {
+      id: '/versanabalance'
+      path: '/versanabalance'
+      fullPath: '/versanabalance'
+      preLoaderRoute: typeof VersanabalanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robolex': {
+      id: '/robolex'
+      path: '/robolex'
+      fullPath: '/robolex'
+      preLoaderRoute: typeof RobolexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resonai9': {
+      id: '/resonai9'
+      path: '/resonai9'
+      fullPath: '/resonai9'
+      preLoaderRoute: typeof Resonai9RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resona7s': {
+      id: '/resona7s'
+      path: '/resona7s'
+      fullPath: '/resona7s'
+      preLoaderRoute: typeof Resona7sRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mx7': {
+      id: '/mx7'
+      path: '/mx7'
+      fullPath: '/mx7'
+      preLoaderRoute: typeof Mx7RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logiqfortis': {
+      id: '/logiqfortis'
+      path: '/logiqfortis'
+      fullPath: '/logiqfortis'
+      preLoaderRoute: typeof LogiqfortisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hepatus5': {
+      id: '/hepatus5'
+      path: '/hepatus5'
+      fullPath: '/hepatus5'
+      preLoaderRoute: typeof Hepatus5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ellisysplus': {
+      id: '/ellisysplus'
+      path: '/ellisysplus'
+      fullPath: '/ellisysplus'
+      preLoaderRoute: typeof EllisysplusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/duetv': {
+      id: '/duetv'
+      path: '/duetv'
+      fullPath: '/duetv'
+      preLoaderRoute: typeof DuetvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dc90': {
+      id: '/dc90'
+      path: '/dc90'
+      fullPath: '/dc90'
+      preLoaderRoute: typeof Dc90RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contlex': {
+      id: '/contlex'
+      path: '/contlex'
+      fullPath: '/contlex'
+      preLoaderRoute: typeof ContlexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consonan8': {
+      id: '/consonan8'
+      path: '/consonan8'
+      fullPath: '/consonan8'
+      preLoaderRoute: typeof Consonan8RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clearlight': {
+      id: '/clearlight'
+      path: '/clearlight'
+      fullPath: '/clearlight'
+      preLoaderRoute: typeof ClearlightRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +357,32 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClearlightRoute: ClearlightRoute,
+  Consonan8Route: Consonan8Route,
+  ContlexRoute: ContlexRoute,
+  Dc90Route: Dc90Route,
+  DuetvRoute: DuetvRoute,
+  EllisysplusRoute: EllisysplusRoute,
+  Hepatus5Route: Hepatus5Route,
+  LogiqfortisRoute: LogiqfortisRoute,
+  Mx7Route: Mx7Route,
+  Resona7sRoute: Resona7sRoute,
+  Resonai9Route: Resonai9Route,
+  RobolexRoute: RobolexRoute,
+  VersanabalanceRoute: VersanabalanceRoute,
+  VersanapremierRoute: VersanapremierRoute,
+  Volusonexpert22Route: Volusonexpert22Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -78,9 +78,9 @@ import {
   isTelegramConfigured 
 } from './lib/telegram';
 
-export default function App() {
+export default function App({ initialTab = 'main' }: { initialTab?: ViewTab } = {}) {
   // Navigation
-  const [activeTab, setActiveTab] = useState<ViewTab>('main');
+  const [activeTab, setActiveTab] = useState<ViewTab>(initialTab);
   const [heroConfigTab, setHeroConfigTab] = useState<'uzi' | 'surgery' | 'cosmetology'>('uzi');
   const [activeObjectionTab, setActiveObjectionTab] = useState<'trust' | 'price' | 'risk' | 'docs' | 'train'>('trust');
   
