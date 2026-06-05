@@ -191,37 +191,40 @@ export function MindrayMX7Landing({
   return (
     <div className="space-y-16 animate-fade-in" id="mindray-mx7-landing-root">
       
-      {/* 0. NAVIGATION & BACK HEADER */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm max-w-6xl mx-auto">
-        <button 
-          onClick={onBackToCatalog}
-          className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-slate-900 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Назад в каталог УЗИ
-        </button>
-        <div className="flex gap-2">
-          <button 
-            onClick={() => toggleFavorite(product.id)}
-            className={`p-2.5 rounded-xl border transition-all ${
-              isFavorite 
-                ? 'bg-red-50 text-red-600 border-red-200' 
-                : 'bg-white text-slate-400 hover:text-slate-600 border-slate-200'
-            }`}
-            title="Добавить в избранное"
+      {/* breadcrumbs */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-100 pb-5">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full md:w-auto">
+          <button
+            onClick={onBackToCatalog}
+            className="flex items-center justify-center gap-2 text-slate-700 hover:text-slate-900 transition group cursor-pointer border border-slate-200 bg-white py-2 px-4 rounded-xl hover:bg-slate-50 text-xs font-bold shrink-0 w-full sm:w-auto"
           >
-            <Heart className="w-5 h-5 fill-current" />
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            Вернуться в каталог
           </button>
-          <button 
-            onClick={() => toggleCompare(product.id)}
-            className={`p-2.5 rounded-xl border transition-all ${
-              isCompared 
-                ? 'bg-blue-50 text-blue-600 border-blue-200' 
-                : 'bg-white text-slate-400 hover:text-slate-600 border-slate-200'
-            }`}
-            title="Добавить в сравнение"
+          <div className="text-xs text-slate-400 font-medium font-sans flex items-center gap-1.5 flex-wrap px-1">
+            <span onClick={onBackToCatalog} className="hover:text-slate-900 hover:underline transition cursor-pointer">Главная</span>
+            <span className="text-slate-300">/</span>
+            <span onClick={onBackToCatalog} className="hover:text-slate-900 hover:underline transition cursor-pointer">Каталог</span>
+            <span className="text-slate-300">/</span>
+            <span onClick={onBackToCatalog} className="hover:text-slate-900 hover:underline transition cursor-pointer">УЗИ Mindray</span>
+            <span className="text-slate-300">/</span>
+            <span className="font-bold text-slate-700 truncate max-w-[240px] sm:max-w-none">{product.name}</span>
+          </div>
+        </div>
+        <div className="flex gap-2.5 w-full md:w-auto justify-between sm:justify-start">
+          <button
+            onClick={() => toggleFavorite(product.id)}
+            className={`flex-1 sm:flex-none justify-center px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 ${isFavorite ? 'bg-rose-50 border-rose-100 text-rose-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
           >
-            <ArrowRightLeft className="w-5 h-5" />
+            <Heart className={`w-4 h-4 ${isFavorite ? 'fill-rose-500 text-rose-500' : ''}`} />
+            <span>{isFavorite ? 'В избранном' : 'В избранное'}</span>
+          </button>
+          <button
+            onClick={() => toggleCompare(product.id)}
+            className={`flex-1 sm:flex-none justify-center px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 ${isCompared ? 'bg-cyan-50 border-cyan-100 text-cyan-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+          >
+            <ArrowRightLeft className="w-4 h-4" />
+            <span>{isCompared ? 'В сравнении' : 'Добавить к сравнению'}</span>
           </button>
         </div>
       </div>
