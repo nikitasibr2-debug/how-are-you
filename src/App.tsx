@@ -752,12 +752,12 @@ export default function App() {
                     <span className="text-slate-400 text-[11px] font-bold uppercase tracking-wider block">Быстрый выбор направления:</span>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        { name: '🩺 УЗИ сканеры', id: 'uzi' },
+                        { name: 'УЗИ сканеры', id: 'uzi' },
                         { name: '🔬 Эндоскопия', id: 'flex_endoscopy' },
                         { name: '🩻 МРТ / КТ', id: 'rad_diag' },
                         { name: '💨 ИВЛ и Наркоз', id: 'reanimation' },
-                        { name: '💋 Косметология & РФ', id: 'cosmetology' },
-                        { name: '🏥 Хирург. столы', id: 'surgery' }
+                        { name: 'Косметология', id: 'cosmetology' },
+                        { name: 'Хирург. столы', id: 'surgery' }
                       ].map((chip) => (
                         <button
                           key={chip.id}
@@ -832,7 +832,7 @@ export default function App() {
                         }}
                         className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg transition-all whitespace-nowrap ${heroConfigTab === 'uzi' ? 'bg-blue-650 bg-blue-700 text-white shadow' : 'bg-slate-50 text-slate-500 hover:text-slate-800'}`}
                       >
-                        🧬 Кабинет УЗИ
+                        Кабинет УЗИ
                       </button>
                       <button
                         onClick={() => {
@@ -841,7 +841,7 @@ export default function App() {
                         }}
                         className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg transition-all whitespace-nowrap ${heroConfigTab === 'surgery' ? 'bg-blue-650 bg-blue-700 text-white shadow' : 'bg-slate-50 text-slate-500 hover:text-slate-800'}`}
                       >
-                        🏥 Хирургия
+                        Хирургия
                       </button>
                       <button
                         onClick={() => {
@@ -850,7 +850,7 @@ export default function App() {
                         }}
                         className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg transition-all whitespace-nowrap ${heroConfigTab === 'cosmetology' ? 'bg-blue-650 bg-blue-700 text-white shadow' : 'bg-slate-50 text-slate-500 hover:text-slate-800'}`}
                       >
-                        💋 Эстетика & RF
+                        Эстетика & RF
                       </button>
                     </div>
 
