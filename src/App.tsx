@@ -832,7 +832,7 @@ export default function App() {
                         }}
                         className={`px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg transition-all whitespace-nowrap ${heroConfigTab === 'uzi' ? 'bg-blue-650 bg-blue-700 text-white shadow' : 'bg-slate-50 text-slate-500 hover:text-slate-800'}`}
                       >
-                        🧬 Кабинет УЗИ
+                        Кабинет УЗИ
                       </button>
                       <button
                         onClick={() => {
