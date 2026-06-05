@@ -9,7 +9,7 @@ export const brands: Brand[] = [
   {
     id: 'mindray',
     name: 'Mindray',
-    logo: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=120&h=60&q=80', // placeholder or clean text UI
+    logo: '/src/assets/mindray_logo.png', // placeholder or clean text UI
     country: 'Китай',
     description: 'Один из лидирующих мировых производителей медицинского оборудования. Известен высококлассными УЗИ-аппаратами, мониторами пациента и наркозно-дыхательными установками с лучшим соотношением цены и качества.',
     categoryIds: ['uzi', 'reanimation', 'gynecology']
