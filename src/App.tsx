@@ -752,7 +752,7 @@ export default function App() {
                     <span className="text-slate-400 text-[11px] font-bold uppercase tracking-wider block">Быстрый выбор направления:</span>
                     <div className="flex flex-wrap gap-2">
                       {[
-                        { name: '🩺 УЗИ сканеры', id: 'uzi' },
+                        { name: 'УЗИ сканеры', id: 'uzi' },
                         { name: '🔬 Эндоскопия', id: 'flex_endoscopy' },
                         { name: '🩻 МРТ / КТ', id: 'rad_diag' },
                         { name: '💨 ИВЛ и Наркоз', id: 'reanimation' },
