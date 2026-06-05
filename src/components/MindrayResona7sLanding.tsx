@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AstmedTeamBlock } from './AstmedTeamBlock';
 import { 
   ArrowLeft, 
   Heart, 
