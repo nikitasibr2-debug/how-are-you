@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { 
   ArrowLeft, 
+  ArrowUp,
   Heart, 
   ArrowRightLeft, 
   Award, 
@@ -28,10 +29,8 @@ import {
   ShieldAlert
 } from 'lucide-react';
 import { Product, Article } from '../types';
-import albumImagesRaw from '../data/duet_v_album_images.json';
+import albumImages from '../data/duet_v_album_images.json';
 import { logger } from '../lib/logger';
-
-const albumImages = albumImagesRaw as Record<string, string>;
 
 interface DuetVLandingProps {
   product: Product;
@@ -54,6 +53,25 @@ export const DuetVLanding: React.FC<DuetVLandingProps> = ({
   triggerQuote,
   onBackToCatalog
 }) => {
+  // Состояние отображения кнопки наверх и назад в каталог
+  const [showScrollTop, setShowScrollTop] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 405) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Local States for interactive landing blocks
   const [activeTech, setActiveTech] = useState<'ntts' | 'afmr' | 'gynae'>('ntts');
   const [activeCase, setActiveCase] = useState<'lifting' | 'pimples' | 'neck' | 'intimate'>('lifting');
@@ -142,7 +160,7 @@ export const DuetVLanding: React.FC<DuetVLandingProps> = ({
       title: "Глубокое термо-ремоделирование и лифтинг овала лица",
       description: "Пациентка 46 лет. Проблема: гравитационный птоз, обвисание щечной зоны («брыли»), нечеткий контур нижней челюсти. Проведено 3 сеанса монополярного RF насадкой NTTS на аппарате Duet V.",
       stats: "Сокращение избытков кожи на 38%, подтяжка овала лица, восстановление угла молодости до 110 градусов без реабилитации.",
-      img: "/clearlight/device-main.png",
+      img: albumImages["01.jpg"] || "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&h=400&q=80",
       param: "Энергия: 65 Дж/см², Насадка NTTS-300, 420 импульсов на лицо и шею."
     },
     pimples: {
@@ -180,31 +198,36 @@ export const DuetVLanding: React.FC<DuetVLandingProps> = ({
     <div className="space-y-16 animate-fade-in text-slate-900 font-sans" id="duet-v-landing-root">
       
       {/* breadcrumbs */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-rose-100 pb-5">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-rose-100 pb-5">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full md:w-auto">
           <button
             onClick={onBackToCatalog}
-            className="inline-flex items-center justify-center p-2 rounded-xl bg-slate-50 border border-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition cursor-pointer"
+            className="flex items-center justify-center gap-2 text-slate-705 hover:text-slate-900 transition group cursor-pointer border border-slate-205 bg-white py-2 px-4 rounded-xl hover:bg-slate-50 text-xs font-bold shrink-0 w-full sm:w-auto"
           >
-            <ArrowLeft className="w-4 h-4 mr-1" />
-            <span className="text-xs font-bold uppercase tracking-wider">Каталог</span>
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            Вернуться в каталог
           </button>
-          <div className="text-xs text-slate-400 font-medium font-sans">
-            <span>Главная / Каталог / Косметология / </span>
-            <span className="text-slate-700 font-bold">{product.name}</span>
+          <div className="text-xs text-slate-400 font-medium font-sans flex items-center gap-1.5 flex-wrap px-1">
+            <span onClick={onBackToCatalog} className="hover:text-slate-950 hover:underline transition cursor-pointer">Главная</span>
+            <span className="text-slate-300">/</span>
+            <span onClick={onBackToCatalog} className="hover:text-slate-950 hover:underline transition cursor-pointer">Каталог</span>
+            <span className="text-slate-300">/</span>
+            <span onClick={onBackToCatalog} className="hover:text-slate-950 hover:underline transition cursor-pointer">Косметология</span>
+            <span className="text-slate-300">/</span>
+            <span className="text-slate-705 font-bold text-slate-700 truncate max-w-[240px] sm:max-w-none">{product.name}</span>
           </div>
         </div>
-        <div className="flex gap-2.5">
+        <div className="flex gap-2.5 w-full md:w-auto justify-between sm:justify-start">
           <button
             onClick={() => toggleFavorite(product.id)}
-            className={`px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 ${favorites.includes(product.id) ? 'bg-rose-50 border-rose-100 text-rose-600' : 'bg-white border-slate-100 text-slate-600 hover:bg-slate-50'}`}
+            className={`flex-1 sm:flex-none justify-center px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 ${favorites.includes(product.id) ? 'bg-rose-50 border-rose-100 text-rose-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
           >
             <Heart className={`w-4 h-4 ${favorites.includes(product.id) ? 'fill-rose-500 text-rose-500' : ''}`} />
             <span>{favorites.includes(product.id) ? 'В избранном' : 'В избранное'}</span>
           </button>
           <button
             onClick={() => toggleCompare(product.id)}
-            className={`px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 ${compareList.includes(product.id) ? 'bg-cyan-50 border-cyan-100 text-cyan-600' : 'bg-white border-slate-100 text-slate-600 hover:bg-slate-50'}`}
+            className={`flex-1 sm:flex-none justify-center px-4 py-2 rounded-xl border text-xs font-bold transition flex items-center gap-2 ${compareList.includes(product.id) ? 'bg-cyan-50 border-cyan-100 text-cyan-600' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
           >
             <ArrowRightLeft className="w-4 h-4" />
             <span>{compareList.includes(product.id) ? 'В сравнении' : 'Добавить к сравнению'}</span>
@@ -1060,29 +1083,95 @@ export const DuetVLanding: React.FC<DuetVLandingProps> = ({
                 { id: 'service', icon: '🛠️', label: 'Сервисный SLA & Подмена', text: '«А если аппарат сломается во время сеанса?»' },
                 { id: 'demo', icon: '🏢', label: 'Экскурсия & Доказательства', text: '«Можно ли приехать на действующий объект?»' }
               ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => {
-                    setCosmoObjectionTab(tab.id as any);
-                    logger.info(`Косметология: переключение вкладки отработки возражений на "${tab.label}"`);
-                  }}
-                  className={`w-full text-left px-4 py-3.5 rounded-2xl border transition duration-200 cursor-pointer flex items-center justify-between group ${cosmoObjectionTab === tab.id ? 'bg-cyan-500/10 border-cyan-500/50 text-white shadow-lg shadow-cyan-500/10' : 'bg-slate-900/60 border-slate-800/80 text-slate-400 hover:text-slate-200 hover:border-slate-700'}`}
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg animate-pulse">{tab.icon}</span>
-                    <div className="space-y-0.5">
-                      <span className="text-[10px] uppercase tracking-wider font-bold block text-cyan-400">{tab.label}</span>
-                      <span className="text-xs font-bold leading-normal block">{tab.text}</span>
+                <div key={tab.id} className="space-y-2 w-full">
+                  <button
+                    onClick={() => {
+                      setCosmoObjectionTab(tab.id as any);
+                      logger.info(`Косметология: переключение вкладки отработки возражений на "${tab.label}"`);
+                    }}
+                    className={`w-full text-left px-4 py-3.5 rounded-2xl border transition duration-200 cursor-pointer flex items-center justify-between group ${cosmoObjectionTab === tab.id ? 'bg-cyan-500/10 border-cyan-500/50 text-white shadow-lg shadow-cyan-500/10' : 'bg-slate-900/60 border-slate-800/80 text-slate-400 hover:text-slate-200 hover:border-slate-700'}`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-lg animate-pulse">{tab.icon}</span>
+                      <div className="space-y-0.5text-left">
+                        <span className="text-[10px] uppercase tracking-wider font-bold block text-cyan-400">{tab.label}</span>
+                        <span className="text-xs font-bold leading-normal block">{tab.text}</span>
+                      </div>
                     </div>
-                  </div>
-                  <ChevronRight className={`w-4 h-4 transition-transform ${cosmoObjectionTab === tab.id ? 'translate-x-1 text-cyan-400' : 'text-slate-600 group-hover:text-slate-400'}`} />
-                </button>
+                    <ChevronRight className={`w-4 h-4 transition-transform ${cosmoObjectionTab === tab.id ? 'rotate-90 text-cyan-400' : 'text-slate-600 group-hover:text-slate-400'} lg:rotate-0`} />
+                  </button>
+
+                  {/* Adaptive inline answer display for mobile */}
+                  {cosmoObjectionTab === tab.id && (
+                    <div className="block lg:hidden bg-slate-950 border border-slate-800 p-5 rounded-2xl space-y-4 text-left text-slate-300 animate-fade-in">
+                      {tab.id === 'roi' && (
+                        <div className="space-y-2">
+                          <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                            Финансы и Сметы
+                          </span>
+                          <h4 className="text-sm font-bold text-white">Калькулятор стоимости и сметы бьюти-кабинета</h4>
+                          <p className="text-xs text-slate-400 leading-relaxed">
+                            Поставляем премиальную корейскую систему RF-лифтинга Duet V в рассрочку от 0%. Стандартная чистая прибыль кабинета при среднем трафике 3 сеанса в день составляет более 550 000 ₽ за 30 рабочих дней. Полный возврат инвестиций достигается менее чем за 4 месяца работы на базе клинических данных наших клиентов.
+                          </p>
+                        </div>
+                      )}
+                      
+                      {tab.id === 'sanpin' && (
+                        <div className="space-y-2">
+                          <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                            Лицензирование
+                          </span>
+                          <h4 className="text-sm font-bold text-white">Прохождение СанПиН и Роспотребнадзора</h4>
+                          <p className="text-xs text-slate-400 leading-relaxed">
+                            Предоставляем полный пакет оригинальных юридических и регламентных документов. Оригинальное РУ (Регистрационное удостоверение) Минздрава РФ полностью страхует вашу компанию от штрафов при любых проверках регулирующих органов, сохраняя спокойствие руководства.
+                          </p>
+                        </div>
+                      )}
+                      
+                      {tab.id === 'timeline' && (
+                        <div className="space-y-2">
+                          <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                            Таймлайн
+                          </span>
+                          <h4 className="text-sm font-bold text-white">Сроки запуска: 5-7 рабочих дней</h4>
+                          <p className="text-xs text-slate-400 leading-relaxed">
+                            Сервисные инженеры АстМед оперативно подключат и откалибруют прибор к эксплуатации, а наш сертифицированный клинический тренер проведет выездной практический инструктаж с постановкой руки для врачей-косметологов.
+                          </p>
+                        </div>
+                      )}
+                      
+                      {tab.id === 'service' && (
+                        <div className="space-y-2">
+                          <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                            SLA Поддержка
+                          </span>
+                          <h4 className="text-sm font-bold text-white">Сервисный SLA & Оперативная подмена</h4>
+                          <p className="text-xs text-slate-400 leading-relaxed">
+                            Обеспечиваем круглосуточную линию клинической и сервисной помощи. В случае технической неполадки инженер выезжает на объект в кратчайшие сроки, либо мы оперативно отправляем подменный блок, чтобы ваши сеансы никогда не сгорали.
+                          </p>
+                        </div>
+                      )}
+                      
+                      {tab.id === 'demo' && (
+                        <div className="space-y-2">
+                          <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                            Демо-визит
+                          </span>
+                          <h4 className="text-sm font-bold text-white">Живая экскурсия в Москве и СПБ</h4>
+                          <p className="text-xs text-slate-400 leading-relaxed">
+                            Приглашаем вас в сертифицированный АстМед шоурум: поработайте на Duet V лично, проверьте стабильность генератора энергии и узнайте тонкости клинических протоколов у нашего ведущего технолога.
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </div>
 
           {/* Right Column: Interactive Handler Sandbox (Bento Board Component) */}
-          <div className="lg:col-span-7 bg-slate-900/40 border border-slate-800/80 p-6 sm:p-8 rounded-3xl min-h-[500px] flex flex-col justify-between relative overflow-hidden">
+          <div className="hidden lg:flex lg:col-span-7 bg-slate-900/40 border border-slate-800/80 p-6 sm:p-8 rounded-3xl min-h-[500px] flex-col justify-between relative overflow-hidden">
             
             {/* CONTAINER FOR CONTENT */}
             <div className="space-y-6">
@@ -1740,8 +1829,49 @@ export const DuetVLanding: React.FC<DuetVLandingProps> = ({
         </div>
       </section>
 
+      {/* BLOCK 12.5: ДОВЕРИЕ И НАША КОМАНДА "ASTMED" */}
+      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-8 mt-12" id="astmed-team-trust">
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-5 relative group overflow-hidden rounded-2xl border border-slate-800">
+            <img 
+              src="/images/team_aesthet.jpg" 
+              alt="Команда Astmed" 
+              className="w-full h-auto object-cover rounded-2xl transform transition-transform duration-500 group-hover:scale-105" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
+              <span className="text-white text-xs font-mono tracking-widest bg-cyan-600 px-2.5 py-1 rounded font-bold">ОФИС И КОМАНДА ASTMED</span>
+            </div>
+          </div>
+          <div className="lg:col-span-7 space-y-5">
+            <div className="inline-flex items-center gap-2 bg-cyan-950/40 border border-cyan-800/60 px-3 py-1.5 rounded-full text-cyan-400 text-xs font-bold uppercase tracking-wider font-mono">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              Нам доверяют лучшие клиники РФ
+            </div>
+            <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight leading-none">
+              Команда экспертов «Astmed» — Ваша опора на каждом этапе
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Каждое поставляемое устройство — это не просто коробка, а долгосрочное партнерство. Наша сертифицированная команда <strong className="text-white">Astmed</strong> состоит из высококлассных инженеров медтехники, практикующих врачей-косметологов и сертифицированных бизнес-консультантов.
+            </p>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Мы лично доставляем оборудование по всей России, проводим пусконаладочные работы, занимаемся обучением вашего персонала с выдачей дипломов и обеспечиваем молниеносное сервисное сопровождение 24/7. Покупая у нас, вы защищаете клинику от простоев и получаете поток довольных пациентов с первого дня!
+            </p>
+            <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="border border-slate-800 bg-slate-950/50 p-3 rounded-xl">
+                <span className="text-sm font-black text-cyan-400 block font-mono">100% Честность</span>
+                <span className="text-[10px] text-slate-500">Живой показ и тест-драйв оборудования</span>
+              </div>
+              <div className="border border-slate-800 bg-slate-950/50 p-3 rounded-xl">
+                <span className="text-sm font-black text-cyan-400 block font-mono">Официальный СЦ</span>
+                <span className="text-[10px] text-slate-500">Инженеры с лицензией Росздравнадзора</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ОПТИМИЗИРОВАННЫЙ БЛОГ (10 СТАТЕЙ POD WORDSTAT ЗАПРОСЫ) */}
-      <section className="space-y-8" id="blog-articles-directory">
+      <section className="space-y-8 mt-12" id="blog-articles-directory">
         <div className="space-y-3">
           <span className="text-xs font-bold uppercase tracking-wider text-rose-600 block">SEO-Академия Аппаратной Косметологии</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
@@ -1879,6 +2009,18 @@ export const DuetVLanding: React.FC<DuetVLandingProps> = ({
             </div>
           </div>
         </div>
+      )}
+
+      {/* 🚀 FLOAT NAV WIDGET FOR QUICK RETURN */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 bg-slate-900 hover:bg-[#00AEEF] text-white hover:text-slate-950 p-3 rounded-full shadow-2xl transition cursor-pointer border border-slate-800 flex items-center justify-center animate-fade-in"
+          title="Наверх"
+          id="duetv-scroll-top"
+        >
+          <ArrowUp className="w-5 h-5" />
+        </button>
       )}
 
     </div>

@@ -55,10 +55,19 @@ import { faqs } from './data/faqs';
 import { articles } from './data/articles';
 import { DuetVLanding } from './components/DuetVLanding';
 import { ClearLightLanding } from './components/ClearLightLanding';
-import { VersanaBalanceLanding } from './components/VersanaBalanceLanding';
-import deviceUltrasound from './assets/device-ultrasound.jpg';
-import deviceAnesthesia from './assets/device-anesthesia.jpg';
-import deviceRfLifting from './assets/device-rf-lifting.jpg';
+import { EllisysPlusSLanding } from './components/EllisysPlusSLanding';
+import { ContlexLanding } from './components/ContlexLanding';
+import { RobolexLanding } from './components/RobolexLanding';
+import { LogiqFortisR4Landing } from './components/LogiqFortisR4Landing';
+import { VersanaPremierLanding } from './components/VersanaPremierLanding';
+import { MindrayDC90Landing } from './components/MindrayDC90Landing';
+import { MindrayConsonaN8Landing } from './components/MindrayConsonaN8Landing';
+import { VolusonExpert22Landing } from './components/VolusonExpert22Landing';
+import { MindrayResonaI9Landing } from './components/MindrayResonaI9Landing';
+import { MindrayMX7Landing } from './components/MindrayMX7Landing';
+import { GEVersanaBalanceR2Landing } from './components/GEVersanaBalanceR2Landing';
+import { MindrayResona7sLanding } from './components/MindrayResona7sLanding';
+import { MindrayHepatus5Landing } from './components/MindrayHepatus5Landing';
 import { logger, LogEntry } from './lib/logger';
 import { Product, FilterState, ViewTab } from './types';
 import { 
@@ -79,6 +88,14 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [filtersCollapsed, setFiltersCollapsed] = useState<boolean>(true);
+  
+  const handleSelectCategory = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    setFiltersCollapsed(true);
+    logger.info(`Выбрана категория: ${categoryId || 'Все категории'}. Фильтры автоматически свернуты.`);
+  };
+
   const [selectedBrand, setSelectedBrand] = useState<string>('');
   const [selectedCountry, setSelectedCountry] = useState<string>('');
   const [selectedAvailability, setSelectedAvailability] = useState<string>('');
@@ -109,14 +126,62 @@ export default function App() {
       setActiveTab('duet-v-landing');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       logger.info(`Переход на специальную страницу-лендинг для косметологического аппарата: ${product.name}`);
+    } else if (product.id === 'robolex') {
+      setActiveTab('robolex-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для косметологического аппарата: ${product.name}`);
+    } else if (product.id === 'ellisys-plus-s') {
+      setActiveTab('ellisys-plus-s-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для косметологического аппарата: ${product.name}`);
+    } else if (product.id === 'contlex') {
+      setActiveTab('contlex-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для косметологического аппарата: ${product.name}`);
     } else if (product.id === 'clearlight') {
       setActiveTab('clearlight-landing');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       logger.info(`Переход на специальную страницу-лендинг для косметологического аппарата: ${product.name}`);
-    } else if (product.id === 'versana-balance-r2') {
-      setActiveTab('versana-landing');
+    } else if (product.id === 'logiq-fortis-r4') {
+      setActiveTab('logiq-fortis-r4-landing');
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      logger.info(`Переход на лендинг УЗИ-аппарата: ${product.name}`);
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
+    } else if (product.id === 'ge-versana-premier') {
+      setActiveTab('versana-premier-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
+    } else if (product.id === 'mindray-dc-90') {
+      setActiveTab('mindray-dc-90-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
+    } else if (product.id === 'mindray-consona-n8') {
+      setActiveTab('mindray-consona-n8-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
+    } else if (product.id === 'ge-voluson-expert-22') {
+      setActiveTab('voluson-expert-22-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
+    } else if (product.id === 'mindray-resona-i9') {
+      setActiveTab('mindray-resona-i9-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
+    } else if (product.id === 'mindray-mx7') {
+      setActiveTab('mindray-mx7-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
+    } else if (product.id === 'ge-versana-balance-r2') {
+      setActiveTab('ge-versana-balance-r2-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
+    } else if (product.id === 'mindray-resona-7s') {
+      setActiveTab('mindray-resona-7s-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
+    } else if (product.id === 'mindray-hepatus-5') {
+      setActiveTab('mindray-hepatus-5-landing');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      logger.info(`Переход на специальную страницу-лендинг для УЗИ-аппарата: ${product.name}`);
     } else {
       setSelectedProduct(product);
       logger.info(`Открыто модальное окно деталей товара: ${product.name}`);
@@ -183,7 +248,9 @@ export default function App() {
   // Track user navigation for analytics logs
   const handleTabChange = (tab: ViewTab) => {
     setActiveTab(tab);
+    setSelectedProduct(null);
     logger.debug(`Пользователь перешел на вкладку: ${tab}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Favorites Handler
@@ -427,13 +494,13 @@ export default function App() {
   }, [faqCategory, faqSearch]);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900" id="astmed-root">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden" id="astmed-root">
       
       {/* ----------------- STICKY PREMIUM HEADER ----------------- */}
       <header className="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm transition-all" id="main-header">
         
         {/* Info Top Bar */}
-        <div className="bg-slate-50 text-slate-500 border-b border-slate-100 py-3 px-4 sm:px-6 lg:px-8 text-[11.5px] font-medium uppercase tracking-wider flex flex-wrap justify-between items-center gap-2">
+        <div className="hidden lg:flex bg-slate-50 text-slate-500 border-b border-slate-100 py-2.5 px-4 sm:px-6 lg:px-8 text-[11px] font-semibold uppercase tracking-wider justify-between items-center gap-2" id="info-top-bar">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-blue-700" />
@@ -450,7 +517,7 @@ export default function App() {
             </span>
           </div>
           <div className="flex items-center gap-5">
-            <span className="text-blue-700 font-bold">8 (800) 555-35-35</span>
+            <span className="text-blue-700 font-bold whitespace-nowrap">8 (800) 555-35-35</span>
             <a href="mailto:sale@medtech-pro.ru" className="hover:text-blue-700 transition-colors flex items-center gap-1.5 font-semibold text-slate-600">
               <Mail className="w-3.5 h-3.5 text-blue-700" />
               <span>sale@medtech-pro.ru</span>
@@ -552,7 +619,7 @@ export default function App() {
           {/* Contact action & Metrics indicators */}
           <div className="flex items-center justify-between md:justify-end gap-4 lg:gap-6">
             <div className="hidden lg:block text-right">
-              <a href="tel:88005553535" className="text-base font-extrabold text-slate-900 hover:text-blue-700 transition-colors block">
+              <a href="tel:88005553535" className="text-base font-extrabold text-slate-900 hover:text-blue-700 transition-colors block whitespace-nowrap">
                 8 (800) 555-35-35
               </a>
               <span className="text-[10px] text-emerald-500 font-semibold flex items-center justify-end gap-1">
@@ -562,15 +629,15 @@ export default function App() {
             </div>
 
             {/* Icons indicators: Favorites & Comparison */}
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-1.5 sm:gap-2.5">
               <button
                 onClick={() => handleTabChange('comparison')}
                 title="Сравнение моделей"
-                className={`p-2.5 rounded-full border relative transition-all ${activeTab === 'comparison' ? 'bg-blue-50 border-blue-100 text-blue-700' : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-slate-100'}`}
+                className={`p-2 sm:p-2.5 rounded-full border relative transition-all ${activeTab === 'comparison' ? 'bg-blue-50 border-blue-100 text-blue-700' : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-slate-100'}`}
               >
-                <ArrowRightLeft className="w-4 h-4" />
+                <ArrowRightLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 {compareList.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white font-bold text-[9px] w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white">
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white font-bold text-[8px] sm:text-[9px] w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full flex items-center justify-center border border-white">
                     {compareList.length}
                   </span>
                 )}
@@ -579,11 +646,11 @@ export default function App() {
               <button
                 onClick={() => handleTabChange('favorites')}
                 title="Избранное"
-                className={`p-2.5 rounded-full border relative transition-all ${activeTab === 'favorites' ? 'bg-blue-50 border-blue-100 text-blue-700' : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-slate-100'}`}
+                className={`p-2 sm:p-2.5 rounded-full border relative transition-all ${activeTab === 'favorites' ? 'bg-blue-50 border-blue-100 text-blue-700' : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-slate-100'}`}
               >
-                <Heart className="w-4 h-4" />
+                <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 {favorites.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-blue-700 text-white font-bold text-[9px] w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-white">
+                  <span className="absolute -top-1 -right-1 bg-blue-700 text-white font-bold text-[8px] sm:text-[9px] w-4 h-4 sm:w-4.5 sm:h-4.5 rounded-full flex items-center justify-center border border-white">
                     {favorites.length}
                   </span>
                 )}
@@ -592,7 +659,7 @@ export default function App() {
 
             <button 
               onClick={() => triggerQuote(null, 'kp')}
-              className="bg-emerald-500 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-md shadow-emerald-100 hover:bg-emerald-600 hover:shadow-lg transition-all cursor-pointer"
+              className="bg-emerald-500 text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-md shadow-emerald-100 hover:bg-emerald-600 hover:shadow-lg transition-all cursor-pointer whitespace-nowrap shrink-0"
             >
               ПОЛУЧИТЬ КП
             </button>
@@ -602,7 +669,7 @@ export default function App() {
 
         {/* Global Nav Bar */}
         <nav className="bg-slate-50 border-t border-slate-100" id="global-nav">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto scrollbar-none py-1.5 gap-1 select-none font-sans">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-nowrap overflow-x-auto md:flex-wrap md:overflow-x-visible items-center py-2.5 gap-1.5 md:gap-2 select-none font-sans no-scrollbar scroll-smooth snap-x">
             <button
               onClick={() => handleTabChange('main')}
               className={`px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${activeTab === 'main' ? 'bg-white text-blue-700 shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'}`}
@@ -661,27 +728,27 @@ export default function App() {
           <div className="space-y-16 animate-fade-in" id="landing-view">
             
             {/* HER0 / OFFERS BLOCK */}
-            <section className="bg-gradient-to-r from-slate-50 to-white border border-slate-100 rounded-3xl p-6 sm:p-8 lg:p-12 text-slate-900 relative overflow-hidden shadow-2xl shadow-slate-100/50">
+            <section className="bg-gradient-to-r from-slate-50 to-white border border-slate-100 rounded-3xl p-4 sm:p-8 lg:p-12 text-slate-900 relative overflow-hidden shadow-2xl shadow-slate-100/50">
               {/* Backglow decoratives */}
               <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[100px] pointer-events-none"></div>
               <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-blue-600/5 rounded-full blur-[100px] pointer-events-none"></div>
               
               <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-                <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-widest">
-                    <Sparkles className="w-3.5 h-3.5 text-blue-700" />
+                <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+                  <div className="flex flex-wrap sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl sm:rounded-full bg-blue-100 text-blue-700 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider max-w-full">
+                    <Sparkles className="w-3.5 h-3.5 text-blue-700 shrink-0" />
                     <span>Федеральный дистрибьютор экспертного медоборудования</span>
                   </div>
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-[1.12] tracking-tight">
+                  <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
                     Комплексное оснащение <br />
-                    <span className="text-blue-700 bg-blue-50 px-2 rounded-lg">медицинских клиник</span>
+                    <span className="text-blue-700 bg-blue-50 px-2 rounded-lg inline-block mt-1 sm:mt-0">медицинских клиник</span>
                   </h1>
-                  <p className="text-slate-500 text-sm sm:text-base leading-relaxed max-w-xl">
+                  <p className="text-slate-500 text-xs sm:text-base leading-relaxed max-w-xl">
                     Прямые поставки медицинского оборудования из Южной Кореи, Германии, США и Китая. Проектирование по стандартам Лицензирования Минздрава РФ с гарантией и сервисом 24/7.
                   </p>
                   
                   {/* Quick interactive subcategories chips for lively UX */}
-                  <div className="space-y-2.5 pt-2">
+                  <div className="space-y-2.5 pt-1">
                     <span className="text-slate-400 text-[11px] font-bold uppercase tracking-wider block">Быстрый выбор направления:</span>
                     <div className="flex flex-wrap gap-2">
                       {[
@@ -695,11 +762,11 @@ export default function App() {
                         <button
                           key={chip.id}
                           onClick={() => {
-                            setSelectedCategory(chip.id);
+                            handleSelectCategory(chip.id);
                             handleTabChange('catalog');
                             logger.info(`Клик по быстрому тегу направления на главном экране: ${chip.name}`);
                           }}
-                          className="bg-white hover:bg-blue-600 text-slate-700 hover:text-white border border-slate-200 hover:border-blue-600 rounded-xl px-3.5 py-1.5 text-xs font-bold shadow-sm hover:shadow transition-all duration-200 cursor-pointer flex items-center gap-1.5"
+                          className="bg-white hover:bg-blue-600 text-slate-700 hover:text-white border border-slate-200 hover:border-blue-600 rounded-xl px-3.5 py-2.5 sm:py-1.5 text-xs font-bold shadow-sm hover:shadow transition-all duration-200 cursor-pointer flex items-center gap-1.5 min-h-[44px] sm:min-h-0"
                         >
                           {chip.name}
                         </button>
@@ -710,34 +777,34 @@ export default function App() {
                   {/* Confidence indicators block */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-100">
                     <div>
-                      <div className="text-2xl sm:text-3xl font-black text-blue-700">13+ лет</div>
+                      <div className="text-xl sm:text-3xl font-black text-blue-700">13+ лет</div>
                       <div className="text-[10px] sm:text-xs text-slate-400 font-semibold tracking-tight">Опыта на рынке РФ</div>
                     </div>
                     <div>
-                      <div className="text-2xl sm:text-3xl font-black text-blue-700">7500+</div>
+                      <div className="text-xl sm:text-3xl font-black text-blue-700">7500+</div>
                       <div className="text-[10px] sm:text-xs text-slate-400 font-semibold tracking-tight">Готовых проектов</div>
                     </div>
                     <div>
-                      <div className="text-2xl sm:text-3xl font-black text-blue-700">800+</div>
+                      <div className="text-xl sm:text-3xl font-black text-blue-700">800+</div>
                       <div className="text-[10px] sm:text-xs text-slate-400 font-semibold tracking-tight">Клинических баз</div>
                     </div>
                     <div>
-                      <div className="text-2xl sm:text-3xl font-black text-blue-700">90%</div>
+                      <div className="text-xl sm:text-3xl font-black text-blue-700">90%</div>
                       <div className="text-[10px] sm:text-xs text-slate-400 font-semibold tracking-tight">Рекомендаций РАН</div>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-4 pt-2">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
                     <button 
                       onClick={() => handleTabChange('catalog')}
-                      className="bg-slate-950 hover:bg-slate-800 text-white font-bold text-sm px-8 py-3.5 rounded-xl shadow-lg shadow-slate-200 transition-all cursor-pointer flex items-center gap-2 group"
+                      className="bg-slate-950 hover:bg-slate-800 text-white font-bold text-sm px-6 py-4 rounded-xl shadow-lg shadow-slate-200 transition-all cursor-pointer flex items-center justify-center gap-2 group w-full sm:w-auto"
                     >
                       <span>ОТКРЫТЬ КАТАЛОГ</span>
                       <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                     </button>
                     <button 
                       onClick={() => triggerQuote(null, 'consultation')}
-                      className="bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm px-6 py-3.5 rounded-xl border border-slate-200 transition"
+                      className="bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm px-6 py-4 rounded-xl border border-slate-200 transition text-center w-full sm:w-auto"
                     >
                       Рассчитать Лизинг 0%
                     </button>
@@ -745,8 +812,8 @@ export default function App() {
                 </div>
 
                 {/* Marketer-Designer interactive Smart Clinic Configurator widget */}
-                <div className="lg:col-span-5 relative">
-                  <div className="relative w-full bg-white border border-slate-150 p-5 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 text-slate-700 space-y-4">
+                <div className="lg:col-span-5 relative w-full">
+                  <div className="relative w-full bg-white border border-slate-150 p-4 sm:p-5 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 text-slate-700 space-y-4">
                     
                     {/* Interactive Selector Header */}
                     <div className="space-y-1">
@@ -757,7 +824,7 @@ export default function App() {
                       <div className="text-xs font-semibold text-slate-400">Выберите тип кабинета для мгновенного аудита оснащения:</div>
                     </div>
 
-                    <div className="flex border-b border-slate-100 pb-2 gap-1 overflow-x-auto">
+                    <div className="flex border-b border-slate-100 pb-2 gap-1 overflow-x-auto no-scrollbar scroll-smooth snap-x flex-nowrap md:flex-wrap md:overflow-x-visible">
                       <button
                         onClick={() => {
                           setHeroConfigTab('uzi');
@@ -791,12 +858,8 @@ export default function App() {
                     {heroConfigTab === 'uzi' && (
                       <div className="space-y-3 animate-fade-in">
                         <div className="h-32 bg-slate-900 border border-slate-850 rounded-xl flex flex-col justify-between items-center p-3 relative overflow-hidden">
-                          {/* Фото аппарата: Mindray Resona I9 (УЗИ) */}
-                          <img src={deviceUltrasound} alt="УЗИ-аппарат Mindray Resona I9" width={1024} height={1024} className="absolute right-2 top-1/2 -translate-y-1/2 h-[120%] w-auto object-contain drop-shadow-2xl pointer-events-none" loading="lazy" />
-                          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/85 to-transparent"></div>
                           {/* Grid backdrop */}
                           <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:12px_12px] opacity-10"></div>
-                          
                           
                           <div className="w-full flex justify-between items-center text-[9px] text-blue-400 font-mono z-10">
                             <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>ULTRASOUND_ROOM_READY</span>
@@ -842,11 +905,7 @@ export default function App() {
                     {heroConfigTab === 'surgery' && (
                       <div className="space-y-3 animate-fade-in">
                         <div className="h-32 bg-slate-900 border border-slate-850 rounded-xl flex flex-col justify-between items-center p-3 relative overflow-hidden">
-                          {/* Фото аппарата: Mindray WATO EX-65 Pro */}
-                          <img src={deviceAnesthesia} alt="Наркозно-дыхательный аппарат Mindray WATO EX-65" width={1024} height={1024} className="absolute right-2 top-1/2 -translate-y-1/2 h-[120%] w-auto object-contain drop-shadow-2xl pointer-events-none" loading="lazy" />
-                          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/85 to-transparent"></div>
                           <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:12px_12px] opacity-10"></div>
-                          
                           
                           <div className="w-full flex justify-between items-center text-[9px] text-emerald-400 font-mono z-10">
                             <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>OR_BLOCK_ACTIVE</span>
@@ -888,11 +947,7 @@ export default function App() {
                     {heroConfigTab === 'cosmetology' && (
                       <div className="space-y-3 animate-fade-in">
                         <div className="h-32 bg-slate-900 border border-slate-850 rounded-xl flex flex-col justify-between items-center p-3 relative overflow-hidden">
-                          {/* Фото аппарата: EunSung Duet V */}
-                          <img src={deviceRfLifting} alt="Аппарат EunSung Duet V для RF-лифтинга" width={1024} height={1024} className="absolute right-2 top-1/2 -translate-y-1/2 h-[120%] w-auto object-contain drop-shadow-2xl pointer-events-none" loading="lazy" />
-                          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-purple-950/85 to-transparent"></div>
                           <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:12px_12px] opacity-10"></div>
-                          
                           
                           <div className="w-full flex justify-between items-center text-[9px] text-purple-400 font-mono z-10">
                             <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse"></span>RF_ENERGY_THERMOLIFTING</span>
@@ -992,10 +1047,10 @@ export default function App() {
             </section>
 
             {/* ОСНОВНЫЕ ЭТАПЫ РАБОТ */}
-            <section className="bg-slate-50 border border-slate-150 rounded-3xl p-6 sm:p-10 space-y-12 relative overflow-hidden" id="work-stages-suite">
+            <section className="bg-slate-50 border border-slate-150 rounded-3xl p-4 sm:p-10 space-y-12 relative overflow-hidden" id="work-stages-suite">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-widest rounded-full">
-                  <Compass className="w-3.5 h-3.5 animate-spin-slow" />
+                <div className="flex flex-wrap sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 text-emerald-800 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest rounded-xl sm:rounded-full max-w-full">
+                  <Compass className="w-3.5 h-3.5 animate-spin-slow shrink-0" />
                   <span>Прозрачный регламент от проектирования до первого пациента</span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-950">
@@ -1179,25 +1234,46 @@ export default function App() {
             </section>
 
             {/* TRUST & KEY REASONS FOR MEDEQ LEVEL COOPERATION */}
-            <section className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-sm grid lg:grid-cols-12 gap-8 items-center" id="trust-factors-banner">
-              <div className="lg:col-span-4 space-y-4">
-                <span className="text-xs font-bold uppercase tracking-widest text-cyan-600">Наши стандарты</span>
-                <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight leading-none">
-                  Почему клиники выбирают АстМед
-                </h2>
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  Поставляем только оригинальное медоборудование с заводов-изготовителей. Имеем полный комплекс разрешительной документации и команду штатных квалифицированных инженеров.
-                </p>
-                <button 
-                  onClick={() => triggerQuote(null, 'consultation')}
-                  className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-5 py-3 rounded-xl transition"
-                >
-                  Заказать консультацию специалиста
-                </button>
+            <section className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8" id="trust-factors-banner">
+              <div className="grid lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-5 space-y-4">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#003366] font-mono">Наши стандарты и люди</span>
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight leading-none text-left">
+                    Почему клиники выбирают АстМед
+                  </h2>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans text-left">
+                    За каждой поставкой сложнейшего лазера, УЗИ-аппарата или бьюти-системы стоит реальная живая команда экспертов компании <strong className="text-slate-900 font-extrabold">Astmed</strong>. Мы не безликие посредники — мы ваши надежные проводники в мире профессионального оборудования, готовые взять на себя 100% ответственности за результат.
+                  </p>
+                  <p className="text-xs text-slate-500 leading-relaxed font-sans text-left">
+                    Наша инженерная служба имеет лицензию Росздравнадзора, а штатные врачи-методисты проводят индивидуальное обучение с выдачей дипломов. Покупая у нас, вы защищаете свой бизнес от простоев и получаете надежного партнера на годы вперед.
+                  </p>
+                  <div className="pt-2 text-left">
+                    <button 
+                      onClick={() => triggerQuote(null, 'consultation')}
+                      className="bg-[#003366] hover:bg-[#002244] text-white font-bold text-xs px-6 py-3 rounded-xl transition shadow-lg shadow-blue-900/10 cursor-pointer"
+                    >
+                      Заказать консультацию команды Astmed
+                    </button>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-7 relative group overflow-hidden rounded-2xl border border-slate-150 shadow-sm">
+                  <img 
+                    src="/images/team_aesthet.jpg" 
+                    alt="Команда Astmed" 
+                    className="w-full h-auto object-cover rounded-2xl transform transition-transform duration-500 group-hover:scale-102"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
+                    <div className="text-white space-y-1 text-left">
+                      <span className="text-[10px] uppercase font-mono bg-cyan-600 tracking-wider px-2 py-0.5 rounded font-black">Шоурум и офис Astmed в Москве</span>
+                      <p className="text-[11px] font-sans text-slate-350">Реальные люди, готовые оказать поддержку 24/7 по всей стране.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="lg:col-span-8 grid sm:grid-cols-2 gap-6">
-                <div className="flex gap-4 p-4 rounded-xl border border-slate-50">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-slate-100 pt-8">
+                <div className="flex gap-4 p-4 rounded-xl border border-slate-50 hover:bg-slate-50/50 transition duration-300 text-left">
                   <div className="bg-slate-50 p-2.5 rounded-lg text-cyan-600 h-11 flex items-center">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
@@ -1207,33 +1283,33 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="flex gap-4 p-4 rounded-xl border border-slate-50">
+                <div className="flex gap-4 p-4 rounded-xl border border-slate-50 hover:bg-slate-50/50 transition duration-300 text-left">
                   <div className="bg-slate-50 p-2.5 rounded-lg text-cyan-600 h-11 flex items-center">
                     <Wrench className="w-5 h-5" />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-slate-900 mb-1">Авторизованный сервис 24/7</h4>
-                    <p className="text-xs text-slate-500 leading-relaxed">Собственные сервисные бригады обеспечивают плановое ТО, монтаж, и оперативный ремонт по всей стране.</p>
+                    <p className="text-xs text-slate-500 leading-relaxed font-sans">Лицензированный СЦ и собственные инженеры обеспечивают быстрое ТО, доставку, и экстренный ремонт по всей РФ.</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 p-4 rounded-xl border border-slate-50">
+                <div className="flex gap-4 p-4 rounded-xl border border-slate-50 hover:bg-slate-50/50 transition duration-300 text-left">
                   <div className="bg-slate-50 p-2.5 rounded-lg text-cyan-600 h-11 flex items-center">
                     <UserCheck className="w-5 h-5" />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-slate-900 mb-1">Аппликационное обучение врачей</h4>
-                    <p className="text-xs text-slate-500 leading-relaxed">Обучаем ваш клинический персонал тонкостям работы с датчиками, суб-режимами верификации и архивации.</p>
+                    <p className="text-xs text-slate-500 leading-relaxed font-sans">Обучаем ваш клинический персонал тонкостям работы непосредственно у вас или во флагманском офисе.</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 p-4 rounded-xl border border-slate-50">
+                <div className="flex gap-4 p-4 rounded-xl border border-slate-50 hover:bg-slate-50/50 transition duration-300 text-left">
                   <div className="bg-slate-50 p-2.5 rounded-lg text-cyan-600 h-11 flex items-center">
                     <BadgePercent className="w-5 h-5" />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-slate-900 mb-1">Лизинговые спецпрограммы</h4>
-                    <p className="text-xs text-slate-500 leading-relaxed">Фирменная рассрочка и лизинг с авансированием от 10% и индивидуальным графиком ежемесячных платежей.</p>
+                    <p className="text-xs text-slate-500 leading-relaxed font-sans">Рассрочка от Astmed и лизинг с авансированием от 0% у крупнейших финансовых партнеров (ВТБ, Сбер Лизинг).</p>
                   </div>
                 </div>
               </div>
@@ -1294,29 +1370,95 @@ export default function App() {
                       { id: 'docs', icon: '📋', label: 'Документы', title: '«Есть ли все регистрационные документы?»' },
                       { id: 'train', icon: '🎓', label: 'Обучение', title: '«Кто будет обучать наш медперсонал?»' }
                     ].map((tab) => (
-                      <button
-                        key={tab.id}
-                        onClick={() => {
-                          setActiveObjectionTab(tab.id as any);
-                          logger.info(`Переход по вкладке отработки возражений: ${tab.label}`);
-                        }}
-                        className={`w-full text-left px-4 py-3.5 rounded-2xl border transition duration-200 cursor-pointer flex items-center justify-between group ${activeObjectionTab === tab.id ? 'bg-cyan-500/10 border-cyan-500/50 text-white shadow-lg shadow-cyan-500/10' : 'bg-slate-900/60 border-slate-800/80 text-slate-400 hover:text-slate-200 hover:border-slate-700'}`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-lg">{tab.icon}</span>
-                          <div className="space-y-0.5">
-                            <span className="text-[10px] uppercase tracking-wider font-bold block text-cyan-400">{tab.label}</span>
-                            <span className="text-xs font-bold leading-normal block">{tab.title}</span>
+                      <div key={tab.id} className="space-y-2 w-full">
+                        <button
+                          onClick={() => {
+                            setActiveObjectionTab(tab.id as any);
+                            logger.info(`Переход по вкладке отработки возражений: ${tab.label}`);
+                          }}
+                          className={`w-full text-left px-4 py-3.5 rounded-2xl border transition duration-200 cursor-pointer flex items-center justify-between group ${activeObjectionTab === tab.id ? 'bg-cyan-500/10 border-cyan-500/50 text-white shadow-lg shadow-cyan-500/10' : 'bg-slate-900/60 border-slate-800/80 text-slate-400 hover:text-slate-200 hover:border-slate-700'}`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="text-lg">{tab.icon}</span>
+                            <div className="space-y-0.5text-left">
+                              <span className="text-[10px] uppercase tracking-wider font-bold block text-cyan-400">{tab.label}</span>
+                              <span className="text-xs font-bold leading-normal block">{tab.title}</span>
+                            </div>
                           </div>
-                        </div>
-                        <ChevronRight className={`w-4 h-4 transition-transform ${activeObjectionTab === tab.id ? 'translate-x-1 text-cyan-400' : 'text-slate-600 group-hover:text-slate-400'}`} />
-                      </button>
+                          <ChevronRight className={`w-4 h-4 transition-transform ${activeObjectionTab === tab.id ? 'rotate-90 text-cyan-400' : 'text-slate-600 group-hover:text-slate-400'} lg:rotate-0`} />
+                        </button>
+
+                        {/* Adaptive inline answer display for mobile */}
+                        {activeObjectionTab === tab.id && (
+                          <div className="block lg:hidden bg-slate-950 border border-slate-800/80 p-5 rounded-2xl space-y-4 text-left text-slate-350 animate-fade-in">
+                            {tab.id === 'trust' && (
+                              <div className="space-y-2">
+                                <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                                  Надежность партнера
+                                </span>
+                                <h4 className="text-sm font-bold text-white">Медоборудование — не бытовая техника</h4>
+                                <p className="text-xs text-slate-400 leading-relaxed">
+                                  АстМед успешно работает на медицинском рынке РФ с 2012 года. Мы спроектировали и оснастили под ключ более 7500 частных и государственных медицинских объектов. Имеем прямые юридические дистрибьюторские контракты с известными заводами Германии, Южной Кореи, США и Китая.
+                                </p>
+                              </div>
+                            )}
+
+                            {tab.id === 'price' && (
+                              <div className="space-y-2">
+                                <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                                  Финансы и Лизинг
+                                </span>
+                                <h4 className="text-sm font-bold text-white">Платёжные планы и лизинг под 0%</h4>
+                                <p className="text-xs text-slate-400 leading-relaxed">
+                                  Мы разработали прозрачные сметные планы и помогаем купить сложнейшее оборудование экспертного класса в лизинг или рассрочку до 0% удорожания. Срок окупаемости УЗИ-сканера или лазерной системы АстМед составляет от 3 до 6 месяцев работы.
+                                </p>
+                              </div>
+                            )}
+
+                            {tab.id === 'risk' && (
+                              <div className="space-y-2">
+                                <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                                  Гарантия и SLA сервис
+                                </span>
+                                <h4 className="text-sm font-bold text-white">Сервисные калибровки и оперативная подмена</h4>
+                                <p className="text-xs text-slate-400 leading-relaxed">
+                                  Мы содержим собственный лицензированный штаб инженеров-медиков и сервисную базу. При возникновении технических неполадок оперативно отправляем мастера на вызов, либо предоставляем аналогичный подменный прибор на период ремонта, чтобы ваш бизнес работал стабильно.
+                                </p>
+                              </div>
+                            )}
+
+                            {tab.id === 'docs' && (
+                              <div className="space-y-2">
+                                <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                                  Легитимность
+                                </span>
+                                <h4 className="text-sm font-bold text-white">Регистрационные Удостоверения и гарантии</h4>
+                                <p className="text-xs text-slate-400 leading-relaxed">
+                                  Все поставляемое экспертное медицинское оборудование укомплектовано полным пакетом оригинальных документов: Регистрационные Удостоверения Минздрава/Росздравнадзора РФ, паспорта ГОСТ, Декларации соответствия и регламентированные протоколы. Получение гослицензий пройдет быстро и без штрафов.
+                                </p>
+                              </div>
+                            )}
+
+                            {tab.id === 'train' && (
+                              <div className="space-y-2">
+                                <span className="text-[10px] uppercase font-mono font-bold text-cyan-400 bg-cyan-950/50 px-2.5 py-0.5 rounded border border-cyan-800/40">
+                                  Клиническое обучение
+                                </span>
+                                <h4 className="text-sm font-bold text-white">Выездное обучение и постановка руки врачу</h4>
+                                <p className="text-xs text-slate-400 leading-relaxed">
+                                  При сдаче оборудования наши лицензированные штатные врачи-методисты проводят сертифицированное выездное/онлайн обучение ваших врачей и лаборантов. Мы ставим руку врачу непосредственно на пациенте и выдаем пошаговые учебные карты по всем режимам сканирования.
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Right Side: Detailed Handler Board (Bento style based on active objection state) */}
-                <div className="lg:col-span-7 bg-slate-900/50 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden min-h-[480px] flex flex-col justify-between">
+                <div id="objection-answers-container" className="hidden lg:flex lg:col-span-7 bg-slate-900/50 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden min-h-[480px] flex-col justify-between scroll-mt-24">
                   <div className="space-y-6 text-slate-300">
                     
                     {/* TAB 1: TRUST */}
@@ -1598,7 +1740,7 @@ export default function App() {
                         <div className="p-3 bg-cyan-950/30 border border-cyan-900/50 rounded-xl flex items-center justify-between text-xs">
                           <div>
                             <span className="text-slate-400 text-[10px] block">Прямая техническая линия поддержки:</span>
-                            <span className="font-extrabold text-white">8 (800) 555-39-44</span>
+                            <span className="font-extrabold text-white whitespace-nowrap">8 (800) 555-39-44</span>
                           </div>
                           <span className="text-[9px] bg-cyan-500 text-slate-950 px-2 py-0.5 rounded font-black uppercase">Ежедневно 8:00 - 21:00 МСК</span>
                         </div>
@@ -1754,6 +1896,48 @@ export default function App() {
               </button>
             </section>
 
+            {/* REAL TEAM TRUST BLOCK - «ASTMED» */}
+            <section className="bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 shadow-md grid lg:grid-cols-12 gap-8 items-center" id="astmed-main-team">
+              <div className="lg:col-span-5 relative group overflow-hidden rounded-2xl border border-slate-150">
+                <img 
+                  src="/images/team_aesthet.jpg" 
+                  alt="Команда Astmed по поставкам Бьюти и Медтехники" 
+                  className="w-full h-auto object-cover rounded-2xl transform transition-transform duration-500 group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent flex items-end p-4">
+                  <div className="text-white space-y-1">
+                    <span className="text-[10px] uppercase font-mono bg-cyan-600 tracking-wider px-2 py-0.5 rounded font-black">Реальные люди — Живое доверие</span>
+                    <p className="text-[11px] font-sans text-slate-200">Команда Astmed в нашем московском офисе.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:col-span-7 space-y-5">
+                <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider font-sans">
+                  Наша Команда — «Astmed»
+                </div>
+                <h2 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight leading-none text-left">
+                  Покупайте медтехнику у живых людей, которым доверяют клиники по всей России
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans text-left">
+                  Вы заслуживаете партнера, который держит слово. Мы — команда <strong className="text-slate-900 font-extrabold">Astmed</strong>, официальный дистрибьютор и сертифицированный поставщик высокотехнологичной медицинской и косметологической аппаратуры в России.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans text-left">
+                  В отличие от безликих перекупщиков, мы берем на себя полную ответственность за результат: наша инженерная служба лицензирована Росздравнадзором, штатные методисты-косметологи проводят индивидуальное обучение с выдачей дипломов, а юристы помогают с получением лицензии вашей клинике "под ключ". Мы верим, что надежные отношения важнее сиюминутной прибыли.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-4 font-sans pt-2 text-left">
+                  <div className="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+                    <span className="text-xs font-extrabold text-blue-700 block uppercase font-sans tracking-wide">✓ Без посредников</span>
+                    <span className="text-[11px] text-slate-500">Прямые договора с фабриками Юж. Кореи, Европы и КНР.</span>
+                  </div>
+                  <div className="bg-slate-50 border border-slate-100 p-3.5 rounded-xl">
+                    <span className="text-xs font-extrabold text-blue-700 block uppercase font-sans tracking-wide">✓ Лицензия Минздрава</span>
+                    <span className="text-[11px] text-slate-500">Собственный сервисный центр быстрого реагирования.</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
           </div>
         )}
 
@@ -1779,6 +1963,19 @@ export default function App() {
 
               {/* Sorting and controls */}
               <div className="flex flex-wrap items-center gap-3">
+                <button
+                  onClick={() => setFiltersCollapsed(!filtersCollapsed)}
+                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all border shadow-sm cursor-pointer ${
+                    !filtersCollapsed
+                      ? 'bg-cyan-600 border-cyan-600 text-white hover:bg-cyan-500'
+                      : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300'
+                  }`}
+                >
+                  <SlidersHorizontal className="w-3.5 h-3.5" />
+                  <span>{!filtersCollapsed ? 'Скрыть фильтры' : 'Показать фильтры'}</span>
+                  {!filtersCollapsed ? <ChevronUp className="w-3 h-3 text-cyan-200" /> : <ChevronDown className="w-3 h-3 text-slate-400" />}
+                </button>
+
                 <div className="flex items-center gap-2 text-xs text-slate-500">
                   <ArrowUpDown className="w-4 h-4 text-slate-400" />
                   <span>Сортировка:</span>
@@ -1799,7 +1996,8 @@ export default function App() {
             <div className="grid lg:grid-cols-12 gap-8 items-start">
               
               {/* Left Side Advanced Filter Widgets */}
-              <aside className="lg:col-span-3 bg-white border border-slate-100 rounded-2xl p-5 space-y-6 shadow-sm sticky top-28" id="catalog-filters">
+              {!filtersCollapsed && (
+                <aside className="lg:col-span-3 bg-white border border-slate-100 rounded-2xl p-5 space-y-6 shadow-sm sticky top-28" id="catalog-filters">
                 <div className="flex justify-between items-center border-b border-slate-100 pb-3">
                   <div className="flex items-center gap-2">
                     <SlidersHorizontal className="w-4.5 h-4.5 text-cyan-600" />
@@ -1828,7 +2026,7 @@ export default function App() {
                   <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Категория оборудования</label>
                   <div className="space-y-1 max-h-48 overflow-y-auto pr-1">
                     <div 
-                      onClick={() => setSelectedCategory('')}
+                      onClick={() => handleSelectCategory('')}
                       className={`flex items-center justify-between text-xs px-2 py-1.5 rounded-lg cursor-pointer transition ${!selectedCategory ? 'bg-cyan-50 text-cyan-700 font-bold' : 'text-slate-600 hover:bg-slate-50'}`}
                     >
                       <span>Все категории</span>
@@ -1836,7 +2034,7 @@ export default function App() {
                     {categories.map(cat => (
                       <div 
                         key={cat.id}
-                        onClick={() => setSelectedCategory(cat.id)}
+                        onClick={() => handleSelectCategory(cat.id)}
                         className={`flex items-center justify-between text-xs p-2 rounded-lg cursor-pointer transition ${selectedCategory === cat.id ? 'bg-cyan-50 text-cyan-700 font-bold' : 'text-slate-600 hover:bg-slate-50'}`}
                       >
                         <span className="truncate">{cat.name}</span>
@@ -1956,9 +2154,10 @@ export default function App() {
                   </button>
                 </div>
               </aside>
+              )}
 
               {/* Main Products Grid */}
-              <div className="lg:col-span-9 space-y-8" id="catalog-listing">
+              <div className={`${filtersCollapsed ? 'lg:col-span-12' : 'lg:col-span-9'} space-y-8`} id="catalog-listing">
                 {filteredProducts.length === 0 ? (
                   <div className="bg-white border border-slate-100 rounded-2xl p-12 text-center space-y-3">
                     <SlidersHorizontal className="w-12 h-12 text-slate-300 mx-auto" />
@@ -1979,7 +2178,7 @@ export default function App() {
                     </button>
                   </div>
                 ) : (
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className={`grid sm:grid-cols-2 ${filtersCollapsed ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-6`}>
                     {filteredProducts.map(product => {
                       const isFavorite = favorites.includes(product.id);
                       const isCompared = compareList.includes(product.id);
@@ -2683,8 +2882,8 @@ export default function App() {
             {/* SECTION 1: HERO / INTRO */}
             <section className="grid lg:grid-cols-12 gap-10 items-center">
               <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-50 border border-cyan-100 text-cyan-700 text-[10px] font-bold uppercase tracking-widest animate-pulse">
-                  <Award className="w-3.5 h-3.5" />
+                <div className="flex flex-wrap sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl sm:rounded-full bg-cyan-50 border border-cyan-100 text-cyan-700 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest animate-pulse max-w-full">
+                  <Award className="w-3.5 h-3.5 shrink-0" />
                   <span>Оригинальное оборудование • РУ Минздрава РФ с полной поддержкой лизинга</span>
                 </div>
                 <h1 className="text-3xl sm:text-5xl font-black text-slate-950 leading-[1.1] tracking-tight">
@@ -3381,8 +3580,8 @@ export default function App() {
               <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px] opacity-5"></div>
               
               <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/10 rounded-full text-xs font-bold text-cyan-300 uppercase tracking-widest mx-auto">
-                  <Sparkles className="w-3.5 h-3.5" />
+                <div className="flex flex-wrap sm:inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-white/10 rounded-xl sm:rounded-full text-[10px] sm:text-xs font-bold text-cyan-300 uppercase tracking-widest mx-auto max-w-full">
+                  <Sparkles className="w-3.5 h-3.5 shrink-0" />
                   <span>Спецусловия от дистрибьютора до конца недели</span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight leading-none text-center font-sans">
@@ -3519,9 +3718,256 @@ export default function App() {
           </div>
         )}
 
-        {activeTab === 'versana-landing' && (
-          <div className="animate-fade-in" id="versana-landing-view">
-            <VersanaBalanceLanding
+        {/* 2f. EXCLUSIVE PREMIUM PRODUCT LANDING (ELLISYS PLUS S SYSTEM) */}
+        {activeTab === 'ellisys-plus-s-landing' && (
+          <div className="space-y-16 animate-fade-in" id="ellisys-landing-view">
+            <EllisysPlusSLanding 
+              product={products.find(p => p.id === 'ellisys-plus-s') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('cosmetology');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2g. EXCLUSIVE PREMIUM PRODUCT LANDING (CONTLEX HIFU SYSTEM) */}
+        {activeTab === 'contlex-landing' && (
+          <div className="space-y-16 animate-fade-in" id="contlex-landing-view">
+            <ContlexLanding 
+              product={products.find(p => p.id === 'contlex') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('cosmetology');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2h. EXCLUSIVE PREMIUM PRODUCT LANDING (ROBOLEX BEAUTY PLATFORM) */}
+        {activeTab === 'robolex-landing' && (
+          <div className="space-y-16 animate-fade-in" id="robolex-landing-view">
+            <RobolexLanding 
+              product={products.find(p => p.id === 'robolex') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('cosmetology');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2i. EXCLUSIVE PREMIUM PRODUCT LANDING (GE HEALTHCARE LOGIQ FORTIS R4) */}
+        {activeTab === 'logiq-fortis-r4-landing' && (
+          <div className="space-y-16 animate-fade-in" id="logiq-fortis-r4-landing-view">
+            <LogiqFortisR4Landing 
+              product={products.find(p => p.id === 'logiq-fortis-r4') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2j. EXCLUSIVE PREMIUM PRODUCT LANDING (GE HEALTHCARE VERSANA PREMIER) */}
+        {activeTab === 'versana-premier-landing' && (
+          <div className="space-y-16 animate-fade-in" id="versana-premier-landing-view">
+            <VersanaPremierLanding 
+              product={products.find(p => p.id === 'ge-versana-premier') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2k. EXCLUSIVE PREMIUM PRODUCT LANDING (MINDRAY DC-90) */}
+        {activeTab === 'mindray-dc-90-landing' && (
+          <div className="space-y-16 animate-fade-in" id="mindray-dc-90-landing-view">
+            <MindrayDC90Landing 
+              product={products.find(p => p.id === 'mindray-dc-90') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2l. EXCLUSIVE PREMIUM PRODUCT LANDING (MINDRAY CONSONA N8) */}
+        {activeTab === 'mindray-consona-n8-landing' && (
+          <div className="space-y-16 animate-fade-in" id="mindray-consona-n8-landing-view">
+            <MindrayConsonaN8Landing 
+              product={products.find(p => p.id === 'mindray-consona-n8') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2m. EXCLUSIVE PREMIUM PRODUCT LANDING (GE HEALTHCARE VOLUSON EXPERT 22) */}
+        {activeTab === 'voluson-expert-22-landing' && (
+          <div className="space-y-16 animate-fade-in" id="voluson-expert-22-landing-view">
+            <VolusonExpert22Landing 
+              product={products.find(p => p.id === 'ge-voluson-expert-22') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2n. EXCLUSIVE PREMIUM PRODUCT LANDING (MINDRAY RESONA I9) */}
+        {activeTab === 'mindray-resona-i9-landing' && (
+          <div className="space-y-16 animate-fade-in" id="mindray-resona-i9-landing-view">
+            <MindrayResonaI9Landing 
+              product={products.find(p => p.id === 'mindray-resona-i9') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2o. EXCLUSIVE PREMIUM PRODUCT LANDING (MINDRAY MX7) */}
+        {activeTab === 'mindray-mx7-landing' && (
+          <div className="space-y-16 animate-fade-in" id="mindray-mx7-landing-view">
+            <MindrayMX7Landing 
+              product={products.find(p => p.id === 'mindray-mx7') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2p. EXCLUSIVE PREMIUM PRODUCT LANDING (GE VERSANA BALANCE R2) */}
+        {activeTab === 'ge-versana-balance-r2-landing' && (
+          <div className="space-y-16 animate-fade-in" id="ge-versana-balance-r2-landing-view">
+            <GEVersanaBalanceR2Landing 
+              product={products.find(p => p.id === 'ge-versana-balance-r2') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2q. EXCLUSIVE PREMIUM PRODUCT LANDING (MINDRAY RESONA 7S) */}
+        {activeTab === 'mindray-resona-7s-landing' && (
+          <div className="space-y-16 animate-fade-in" id="mindray-resona-7s-landing-view">
+            <MindrayResona7sLanding 
+              product={products.find(p => p.id === 'mindray-resona-7s') || products[0]}
+              articles={articles}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
+              onBackToCatalog={() => {
+                setSelectedCategory('uzi');
+                setActiveTab('catalog');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          </div>
+        )}
+
+        {/* 2r. EXCLUSIVE PREMIUM PRODUCT LANDING (MINDRAY HEPATUS 5) */}
+        {activeTab === 'mindray-hepatus-5-landing' && (
+          <div className="space-y-16 animate-fade-in" id="mindray-hepatus-5-landing-view">
+            <MindrayHepatus5Landing 
+              product={products.find(p => p.id === 'mindray-hepatus-5') || products[0]}
+              favorites={favorites}
+              compareList={compareList}
+              toggleFavorite={toggleFavorite}
+              toggleCompare={toggleCompare}
+              triggerQuote={(prod, type) => triggerQuote(prod, type)}
               onBackToCatalog={() => {
                 setSelectedCategory('uzi');
                 setActiveTab('catalog');
@@ -3554,8 +4000,64 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              <div className="lg:col-span-5">
-                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&h=350&q=80" alt="АстМед офис" className="rounded-2xl shadow-md w-full object-cover" />
+              <div className="lg:col-span-5 relative group">
+                <img src="/images/team_aesthet.jpg" alt="АстМед и команда Astmed" className="rounded-2xl shadow-md w-full object-cover border border-slate-150 transition-transform duration-500 group-hover:scale-[1.02]" />
+                <div className="absolute bottom-3 left-3 bg-slate-950/85 text-white text-[10px] uppercase font-mono tracking-wider font-extrabold px-3 py-1.5 rounded-lg border border-slate-800">
+                  Реальное фото нашей команды
+                </div>
+              </div>
+            </div>
+
+            {/* ASTMED TEAM ADVANTAGE */}
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-8 text-white relative overflow-hidden" id="about-astmed-team">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="max-w-3xl space-y-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-cyan-400 block font-mono">Знакомьтесь с профессионалами</span>
+                <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight leading-none">
+                  Команда «Astmed» — Наша гордость и Ваш залог безопасности
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                  Мы в <strong className="text-white">Astmed</strong> верим, что бизнес делается людьми и для людей. За красивыми цифрами и технологичными аппаратами стоят реальные лица специалистов, влюбленных в свое дело. Наша цель — не просто продать вам аппарат, а стать долгосрочным и надежным другом для Вашего бизнеса.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 pt-4 font-sans">
+                <div className="bg-slate-950 border border-slate-800 p-5 rounded-2xl space-y-3">
+                  <div className="w-10 h-10 bg-cyan-950/60 text-cyan-400 border border-cyan-800/40 rounded-full flex items-center justify-center font-bold text-sm">01</div>
+                  <h3 className="text-sm font-black text-white uppercase tracking-wider">Сертифицированные Инженеры</h3>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Наши инженеры проходят ежегодное обучение непосредственно на заводах-производителях в Южной Корее, Германии и КНР. Они обладают всеми лицензиями Росздравнадзора для проведения ремонта, инсталляции и официального обслуживания медицинского оборудования.
+                  </p>
+                </div>
+
+                <div className="bg-slate-950 border border-slate-800 p-5 rounded-2xl space-y-3">
+                  <div className="w-10 h-10 bg-cyan-950/60 text-cyan-400 border border-cyan-800/40 rounded-full flex items-center justify-center font-bold text-sm">02</div>
+                  <h3 className="text-sm font-black text-white uppercase tracking-wider">Врачи-Методисты и Коучи</h3>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Преподавательский штаб состоит из опытных врачей-координаторов. Они обучают ваш персонал с выездом на место либо в нашем симуляционном центре, делясь уникальными протоколами и тонкостями процедур. Выдаем аккредитованные сертификаты после сдачи экзамена.
+                  </p>
+                </div>
+
+                <div className="bg-slate-950 border border-slate-800 p-5 rounded-2xl space-y-3">
+                  <div className="w-10 h-10 bg-cyan-950/60 text-cyan-400 border border-cyan-800/40 rounded-full flex items-center justify-center font-bold text-sm">03</div>
+                  <h3 className="text-sm font-black text-white uppercase tracking-wider">Персональные Менеджеры</h3>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    Ваш заботливый аккаунт-интегратор решит любые задачи: от рассрочки или лизинга под минимальный процент до помощи с прохождением проверок и получением медицинской лицензии. Мы помним каждого клиента по имени и остаемся на связи 24/7.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-slate-950/50 border border-slate-800 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4 font-sans">
+                <div className="text-center sm:text-left space-y-1">
+                  <h4 className="text-xs font-black uppercase text-cyan-400 font-sans tracking-wide">Хотите познакомиться лично?</h4>
+                  <p className="text-[11px] text-slate-400">Приезжайте к нам в шоурум на чашку кофе, протестируйте любой аппарат на живой модели!</p>
+                </div>
+                <button
+                  onClick={() => handleTabChange('catalog')}
+                  className="px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-[11px] uppercase tracking-wider rounded-xl transition cursor-pointer"
+                >
+                  Выбрать аппарат в каталоге
+                </button>
               </div>
             </div>
           </div>
@@ -4006,11 +4508,15 @@ export default function App() {
           
           {/* Logo brand */}
           <div className="col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="bg-blue-700 p-2 rounded-lg">
+            <div 
+              onClick={() => handleTabChange('main')} 
+              className="flex items-center gap-2 cursor-pointer group"
+              id="footer-logo"
+            >
+              <div className="bg-blue-700 p-2 rounded-lg group-hover:bg-blue-800 transition-colors">
                 <Activity className="w-4 h-4 text-white" />
               </div>
-              <span className="text-xl font-extrabold text-white tracking-tight">
+              <span className="text-xl font-extrabold text-white tracking-tight group-hover:text-blue-400 transition-colors">
                 Аст<span className="text-blue-500 font-bold">Мед</span>
               </span>
             </div>
@@ -4039,9 +4545,9 @@ export default function App() {
             <h4 className="text-xs font-black uppercase tracking-widest text-slate-400">Контакты поставщика</h4>
             <div className="flex flex-col gap-2 text-xs text-slate-400">
               <span>Горячая линия бесплатна по РФ:</span>
-              <span className="font-extrabold text-white text-sm select-all">8 (800) 555-35-35</span>
+              <span className="font-extrabold text-white text-sm select-all whitespace-nowrap">8 (800) 555-35-35</span>
               <span>Московский центральный офис:</span>
-              <span className="text-white select-all">8 (495) 777-33-22</span>
+              <span className="text-white select-all whitespace-nowrap">8 (495) 777-33-22</span>
               <span>E-mail отдела снабжения:</span>
               <span className="text-blue-400 font-bold select-all">zakupki@astmed.ru</span>
             </div>
