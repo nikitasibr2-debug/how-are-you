@@ -753,9 +753,9 @@ export default function App({ initialTab = 'main' }: { initialTab?: ViewTab } = 
                     <div className="flex flex-wrap gap-2">
                       {[
                         { name: 'УЗИ сканеры', id: 'uzi' },
-                        { name: '🔬 Эндоскопия', id: 'flex_endoscopy' },
-                        { name: '🩻 МРТ / КТ', id: 'rad_diag' },
-                        { name: '💨 ИВЛ и Наркоз', id: 'reanimation' },
+                       { name: ' Эндоскопия', id: 'flex_endoscopy' },
+                       { name: ' МРТ / КТ', id: 'rad_diag' },
+                       { name: ' ИВЛ и Наркоз', id: 'reanimation' },
                         { name: 'Косметология', id: 'cosmetology' },
                         { name: 'Хирург. столы', id: 'surgery' }
                       ].map((chip) => (
