@@ -517,7 +517,7 @@ export default function App({ initialTab = 'main' }: { initialTab?: ViewTab } = 
             </span>
           </div>
           <div className="flex items-center gap-5">
-            <span className="text-blue-700 font-bold whitespace-nowrap">8 (800) 555-35-35</span>
+            <span className="text-blue-700 font-bold whitespace-nowrap">8 (995) 699-26-60</span>
             <a href="mailto:sale@medtech-pro.ru" className="hover:text-blue-700 transition-colors flex items-center gap-1.5 font-semibold text-slate-600">
               <Mail className="w-3.5 h-3.5 text-blue-700" />
               <span>sale@medtech-pro.ru</span>
@@ -619,8 +619,8 @@ export default function App({ initialTab = 'main' }: { initialTab?: ViewTab } = 
           {/* Contact action & Metrics indicators */}
           <div className="flex items-center justify-between md:justify-end gap-4 lg:gap-6">
             <div className="hidden lg:block text-right">
-              <a href="tel:88005553535" className="text-base font-extrabold text-slate-900 hover:text-blue-700 transition-colors block whitespace-nowrap">
-                8 (800) 555-35-35
+              <a href="tel:89956992660" className="text-base font-extrabold text-slate-900 hover:text-blue-700 transition-colors block whitespace-nowrap">
+                8 (995) 699-26-60
               </a>
               <span className="text-[10px] text-emerald-500 font-semibold flex items-center justify-end gap-1">
                 <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
@@ -4545,7 +4545,7 @@ export default function App({ initialTab = 'main' }: { initialTab?: ViewTab } = 
             <h4 className="text-xs font-black uppercase tracking-widest text-slate-400">Контакты поставщика</h4>
             <div className="flex flex-col gap-2 text-xs text-slate-400">
               <span>Горячая линия бесплатна по РФ:</span>
-              <span className="font-extrabold text-white text-sm select-all whitespace-nowrap">8 (800) 555-35-35</span>
+              <span className="font-extrabold text-white text-sm select-all whitespace-nowrap">8 (995) 699-26-60</span>
               <span>Московский центральный офис:</span>
               <span className="text-white select-all whitespace-nowrap">8 (495) 777-33-22</span>
               <span>E-mail отдела снабжения:</span>
