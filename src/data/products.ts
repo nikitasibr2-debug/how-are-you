@@ -38,9 +38,10 @@ export const products: Product[] = [
     applications: ['Акушерство', 'Гинекология', 'Кардиология', 'Ангиология', 'Абдоминальные исследования'],
     // Mindray Resona I9 — стационарный экспертный УЗИ-сканер с большой консолью
     images: [
-      'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&h=400&q=80',
-      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&h=400&q=80',
-      'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&h=400&q=80'
+      '/images/mindray-resona-i9/main.jpg',
+      '/images/mindray-resona-i9/angle.jpg',
+      '/images/mindray-resona-i9/screen.png',
+      '/images/mindray-resona-i9/probe-1.png'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
