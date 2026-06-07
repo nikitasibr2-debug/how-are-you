@@ -38,9 +38,10 @@ export const products: Product[] = [
     applications: ['Акушерство', 'Гинекология', 'Кардиология', 'Ангиология', 'Абдоминальные исследования'],
     // Mindray Resona I9 — стационарный экспертный УЗИ-сканер с большой консолью
     images: [
-      'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=600&h=400&q=80',
-      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=600&h=400&q=80',
-      'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&h=400&q=80'
+      '/images/mindray-resona-i9/main.jpg',
+      '/images/mindray-resona-i9/angle.jpg',
+      '/images/mindray-resona-i9/screen.png',
+      '/images/mindray-resona-i9/probe-1.png'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
@@ -539,11 +540,12 @@ export const products: Product[] = [
       'Интимный лифтинг, устранение сухости влагалища и возрастных изменений у женщин'
     ],
     images: [
-      '/duet-v/device-main.jpg',
-      '/duet-v/device-brand.jpg',
-      '/duet-v/device-detail.png',
-      '/duet-v/handpiece-face.png',
-      '/duet-v/before-after-face.jpg'
+      '/images/cosmo-duetv/main.jpg',
+      '/images/cosmo-duetv/angle.jpg',
+      '/images/cosmo-duetv/screen.jpg',
+      '/images/cosmo-duetv/nozzle-1.png',
+      '/images/cosmo-duetv/before-1.png',
+      '/images/cosmo-duetv/after-1.png'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
@@ -646,7 +648,10 @@ export const products: Product[] = [
     ],
     applications: ['Абдомен', 'Акушерство', 'Гинекология', 'МСК', 'Сосуды', 'Малые части', 'Педиатрия'],
     images: [
-      'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&h=400&q=80'
+      '/images/ge-versana-balance/main.jpg',
+      '/images/ge-versana-balance/angle.jpg',
+      '/images/ge-versana-balance/screen.jpg',
+      '/images/ge-versana-balance/probe-1.jpg'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
