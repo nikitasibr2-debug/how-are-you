@@ -648,7 +648,10 @@ export const products: Product[] = [
     ],
     applications: ['Абдомен', 'Акушерство', 'Гинекология', 'МСК', 'Сосуды', 'Малые части', 'Педиатрия'],
     images: [
-      'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&h=400&q=80'
+      '/images/ge-versana-balance/main.jpg',
+      '/images/ge-versana-balance/angle.jpg',
+      '/images/ge-versana-balance/screen.jpg',
+      '/images/ge-versana-balance/probe-1.jpg'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
