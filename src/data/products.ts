@@ -540,11 +540,12 @@ export const products: Product[] = [
       'Интимный лифтинг, устранение сухости влагалища и возрастных изменений у женщин'
     ],
     images: [
-      '/duet-v/device-main.jpg',
-      '/duet-v/device-brand.jpg',
-      '/duet-v/device-detail.png',
-      '/duet-v/handpiece-face.png',
-      '/duet-v/before-after-face.jpg'
+      '/images/cosmo-duetv/main.jpg',
+      '/images/cosmo-duetv/angle.jpg',
+      '/images/cosmo-duetv/screen.jpg',
+      '/images/cosmo-duetv/nozzle-1.png',
+      '/images/cosmo-duetv/before-1.png',
+      '/images/cosmo-duetv/after-1.png'
     ],
     warrantyMonths: 24,
     hasRegistrationCertificate: true,
